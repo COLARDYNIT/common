@@ -1,0 +1,9 @@
+bin/
+target/
+.classpath
+.project
+.settings/
+hwbotprime-security/
+nohup.log
+*.log
+.DS_Store
