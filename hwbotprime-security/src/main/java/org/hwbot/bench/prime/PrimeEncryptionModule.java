@@ -7,6 +7,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.JarURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.security.AccessController;
 import java.security.CodeSource;
 import java.security.Key;
@@ -15,6 +16,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.PrivilegedAction;
 import java.security.PrivilegedActionException;
 import java.security.PrivilegedExceptionAction;
+import java.security.ProtectionDomain;
 import java.security.Provider;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
@@ -30,12 +32,12 @@ import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
-import org.apache.commons.codec.binary.Hex;
 import org.hwbot.bench.model.Request;
 import org.hwbot.bench.security.EncryptionModule;
 
 public class PrimeEncryptionModule extends Provider implements EncryptionModule {
 
+    private static final Charset DEFAULT_CHARSET = Charset.forName("UTF-8");
     private static final long serialVersionUID = 1466458569429262359L;
 
     public char[] getIv() {
@@ -48,6 +50,10 @@ public class PrimeEncryptionModule extends Provider implements EncryptionModule 
                 '6', 'E', 'A', 'B', '6', '4' };
     }
 
+    private static final char[] DIGITS_LOWER = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
+
+    private static final char[] DIGITS_UPPER = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+
     /**
      * Encrypt an array of bytes. Before encrypting, you have to set the cipher to use, key and iv (if applicable)
      * 
@@ -55,27 +61,27 @@ public class PrimeEncryptionModule extends Provider implements EncryptionModule 
      * @return the encrypted data
      */
     public byte[] encrypt(byte[] data) {
+        // System.out.println("encrypting " + data.length + " bytes");
         try {
-            if (!selfIntegrityChecking()) {
-                throw new SecurityException("Benchmark has been modified. Bad hacker! shoo!");
-            }
-
             StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
             String callee = "";
             for (StackTraceElement stackTraceElement : stackTrace) {
-                if (stackTraceElement.getClassName().contains("org.hwbot.bench.service")) {
+                if (stackTraceElement.getClassName().contains("org.hwbot")) {
                     callee += stackTraceElement.getClassName() + "." + stackTraceElement.getMethodName() + ":" + stackTraceElement.getLineNumber() + "\n";
                 }
             }
+            // System.out.println("callee: " + callee);
             callee = toSHA1(callee.getBytes());
-            if (!callee.equals("51c200af35394116827b1f66b2e63c69117d7c0b") && !callee.equals("1c9616c8dc8d826639207387b5fdc64615479108") && !callee.equals("3db80118863f4b625a55267c97753b79da1b77d9")
-                    && !callee.equals("46eba4fa8736eb2b54ed80ecf808b837046f7d6a")) {
+            if (!callee.equals("51c200af35394116827b1f66b2e63c69117d7c0b") && !callee.equals("1c9616c8dc8d826639207387b5fdc64615479108")
+                    && !callee.equals("3db80118863f4b625a55267c97753b79da1b77d9") && !callee.equals("46eba4fa8736eb2b54ed80ecf808b837046f7d6a")
+                    && !callee.equals("ac6577f060566285415e658bc9cca31414cdf2c5")) {
+                // System.out.println("unkown callee hash: " + callee);
                 throw new SecurityException("You may not access this class directly. Bad hacker! shoo!");
             }
 
             String cipher = "AES/CBC/PKCS5Padding";
-            byte[] key = Hex.decodeHex(getKey());
-            byte[] iv = Hex.decodeHex(getIv());
+            byte[] key = decodeHex(getKey());
+            byte[] iv = decodeHex(getIv());
 
             String[] config = cipher.split("/");
             Key encryptKey = new SecretKeySpec(key, config[0]);
@@ -86,17 +92,14 @@ public class PrimeEncryptionModule extends Provider implements EncryptionModule 
             } else if ("ECB".equals(config[1])) {
                 c.init(Cipher.ENCRYPT_MODE, encryptKey);
             }
+            // System.out.println("encryption ok, encrypting...");
             return c.doFinal(data);
         } catch (Exception e) {
-            throw new RuntimeException("Failed to encrypt: " + e);
+            throw new RuntimeException("Failed to encrypt: " + e, e);
         }
     }
 
     public void addChecksum(Request request) {
-        if (!selfIntegrityChecking()) {
-            throw new SecurityException("Benchmark has been modified. Bad hacker! shoo!");
-        }
-
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         String callee = "";
         for (StackTraceElement stackTraceElement : stackTrace) {
@@ -113,6 +116,7 @@ public class PrimeEncryptionModule extends Provider implements EncryptionModule 
         buffer.append("-");
         buffer.append(callee);
         try {
+            // System.out.println("hashing:\n" + buffer);
             request.setApplicationChecksum(toSHA1(buffer.toString().getBytes("UTF-8")));
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);
@@ -126,7 +130,7 @@ public class PrimeEncryptionModule extends Provider implements EncryptionModule 
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException();
         }
-        return Hex.encodeHexString(md.digest(string));
+        return encodeHexString(md.digest(string));
     }
 
     // certificate check
@@ -320,14 +324,19 @@ public class PrimeEncryptionModule extends Provider implements EncryptionModule 
      * that all your provider implementation is packaged inside ONE jar.
      */
     private static final synchronized boolean selfIntegrityChecking() {
-        if (verifiedSelfIntegrity) {
+        if (verifiedSelfIntegrity || isDevMode()) {
             return true;
         }
 
         URL providerURL = AccessController.doPrivileged(new PrivilegedAction<URL>() {
             public URL run() {
-                CodeSource cs = PrimeEncryptionModule.class.getProtectionDomain().getCodeSource();
-                return cs.getLocation();
+                ProtectionDomain protectionDomain = PrimeEncryptionModule.class.getProtectionDomain();
+                if (protectionDomain != null) {
+                    CodeSource cs = protectionDomain.getCodeSource();
+                    return cs.getLocation();
+                } else {
+                    throw new SecurityException("application is not signed");
+                }
             }
         });
 
@@ -352,6 +361,10 @@ public class PrimeEncryptionModule extends Provider implements EncryptionModule 
 
         verifiedSelfIntegrity = true;
         return true;
+    }
+
+    private static boolean isDevMode() {
+        return false;
     }
 
     /*
@@ -513,6 +526,63 @@ public class PrimeEncryptionModule extends Provider implements EncryptionModule 
         protected void finalize() throws Throwable {
             jarFile.close();
         }
+    }
+
+    public static char[] encodeHex(final byte[] data) {
+        return encodeHex(data, true);
+    }
+
+    public static char[] encodeHex(final byte[] data, final boolean toLowerCase) {
+        return encodeHex(data, toLowerCase ? DIGITS_LOWER : DIGITS_UPPER);
+    }
+
+    protected static char[] encodeHex(final byte[] data, final char[] toDigits) {
+        final int l = data.length;
+        final char[] out = new char[l << 1];
+        // two characters form the hex value.
+        for (int i = 0, j = 0; i < l; i++) {
+            out[j++] = toDigits[(0xF0 & data[i]) >>> 4];
+            out[j++] = toDigits[0x0F & data[i]];
+        }
+        return out;
+    }
+
+    public static String encodeHexString(final byte[] data) {
+        return new String(encodeHex(data));
+    }
+
+    public byte[] decode(final byte[] array) {
+        return decodeHex(new String(array, DEFAULT_CHARSET).toCharArray());
+    }
+
+    public static byte[] decodeHex(final char[] data) {
+
+        final int len = data.length;
+
+        if ((len & 0x01) != 0) {
+            throw new RuntimeException("Odd number of characters.");
+        }
+
+        final byte[] out = new byte[len >> 1];
+
+        // two characters form the hex value.
+        for (int i = 0, j = 0; j < len; i++) {
+            int f = toDigit(data[j], j) << 4;
+            j++;
+            f = f | toDigit(data[j], j);
+            j++;
+            out[i] = (byte) (f & 0xFF);
+        }
+
+        return out;
+    }
+
+    protected static int toDigit(final char ch, final int index) {
+        final int digit = Character.digit(ch, 16);
+        if (digit == -1) {
+            throw new IllegalArgumentException("Illegal hexadecimal character " + ch + " at index " + index);
+        }
+        return digit;
     }
 
 }
