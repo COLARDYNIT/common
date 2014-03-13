@@ -1,22 +1,28 @@
 package org.hwbot.api.submit.dto;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
+
 @XmlRootElement(name = "response")
+@JsonSerialize(include = Inclusion.NON_NULL)
 public class VersionApiResponse implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private String url;
     private String version;
+    private Set<String> supportedVersions;
     private String error;
 
     public VersionApiResponse() {
     }
 
-    public VersionApiResponse(String url, String version) {
+    public VersionApiResponse(String url, String version, Set<String> supportedVersions) {
         super();
         this.url = url;
         this.version = version;
@@ -52,6 +58,15 @@ public class VersionApiResponse implements Serializable {
 
     public void setError(String message) {
         this.error = message;
+    }
+
+    @XmlElement
+    public Set<String> getSupportedVersions() {
+        return supportedVersions;
+    }
+
+    public void setSupportedVersions(Set<String> supportedVersions) {
+        this.supportedVersions = supportedVersions;
     }
 
 }
