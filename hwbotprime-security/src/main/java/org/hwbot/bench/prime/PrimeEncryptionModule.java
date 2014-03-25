@@ -70,12 +70,9 @@ public class PrimeEncryptionModule extends Provider implements EncryptionModule 
                     callee += stackTraceElement.getClassName() + "." + stackTraceElement.getMethodName() + ":" + stackTraceElement.getLineNumber() + "\n";
                 }
             }
-            // System.out.println("callee: " + callee);
             callee = toSHA1(callee.getBytes());
-            if (!callee.equals("51c200af35394116827b1f66b2e63c69117d7c0b") && !callee.equals("1c9616c8dc8d826639207387b5fdc64615479108")
-                    && !callee.equals("3db80118863f4b625a55267c97753b79da1b77d9") && !callee.equals("46eba4fa8736eb2b54ed80ecf808b837046f7d6a")
-                    && !callee.equals("ac6577f060566285415e658bc9cca31414cdf2c5")) {
-                // System.out.println("unkown callee hash: " + callee);
+            if (!callee.equals("07e335d21fa026ef577a363528a162ef04f55515") && !callee.equals("dd9ecc3b92648b2d28b5e767a0555954a6143d18")) {
+                // System.out.println(callee);
                 throw new SecurityException("You may not access this class directly. Bad hacker! shoo!");
             }
 

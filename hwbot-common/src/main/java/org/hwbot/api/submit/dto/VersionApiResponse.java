@@ -69,4 +69,10 @@ public class VersionApiResponse implements Serializable {
         this.supportedVersions = supportedVersions;
     }
 
+    @Override
+    public String toString() {
+        return "VersionApiResponse [" + (url != null ? "url=" + url + ", " : "") + (version != null ? "version=" + version + ", " : "")
+                + (supportedVersions != null ? "supportedVersions=" + supportedVersions + ", " : "") + (error != null ? "error=" + error : "") + "]";
+    }
+
 }
