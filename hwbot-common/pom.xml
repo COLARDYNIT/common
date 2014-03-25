@@ -42,4 +42,18 @@
 			</plugin>
 	    </plugins>
 	</build>
+	<distributionManagement>
+		<!-- use the following if you're not using a snapshot version. -->
+		<repository>
+			<id>COLARDYN IT official repo</id>
+			<name>HWBOT official repo</name>
+			<url>scp://repo.hwbot.org/home/ubuntu/.m2/repository</url>
+		</repository>
+		<!-- use the following if you ARE using a snapshot version. -->
+		<snapshotRepository>
+			<id>COLARDYN IT official repo</id>
+			<name>HWBOT official snapshot repo</name>
+			<url>scp://repo.hwbot.org/home/ubuntu/.m2/repository</url>
+		</snapshotRepository>
+	</distributionManagement>
 </project>
