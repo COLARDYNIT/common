@@ -7,8 +7,7 @@
 	<scm>
 		<developerConnection>scm:git:git@github.com:COLARDYNIT/common.git</developerConnection>
 		<url>https://github.com/COLARDYNIT/HWBOT</url>
-	  <tag>HEAD</tag>
-  </scm>
+    </scm>
 	<issueManagement>
 		<system>JIRA</system>
 		<url>http://bugs.hwbot.org/browse/HWBOT</url>
@@ -28,6 +27,13 @@
 		</dependency>
 	</dependencies>
 	<build>
+	    <extensions>
+	        <extension>
+	            <groupId>org.apache.maven.wagon</groupId>
+	            <artifactId>wagon-ssh</artifactId>
+	            <version>2.4</version>
+	        </extension>
+	    </extensions>
 	    <plugins>
 	        <!-- COMPILE FOR JDK 1.6 -->
 			<plugin>
