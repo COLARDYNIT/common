@@ -11,7 +11,7 @@ public class DeviceRecordDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public enum RecordType {
-        best_device, best_device_family, best_architecture, best_overall
+        best_device, best_cpu_core, best_cpu_family, best_architecture
     };
 
     public RecordType type;
