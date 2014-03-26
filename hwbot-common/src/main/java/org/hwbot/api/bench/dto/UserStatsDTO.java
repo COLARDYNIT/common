@@ -101,4 +101,17 @@ public class UserStatsDTO implements Serializable {
         this.hardwareMasterRank = hardwareMasterRank;
     }
 
+    @Override
+    public String toString() {
+        return "UserStatsDTO [" + (leaguePoints != null ? "leaguePoints=" + leaguePoints + ", " : "")
+                + (teamPowerPoints != null ? "teamPowerPoints=" + teamPowerPoints + ", " : "") + (leagueRank != null ? "leagueRank=" + leagueRank + ", " : "")
+                + (leagueNationalRank != null ? "leagueNationalRank=" + leagueNationalRank + ", " : "")
+                + (leagueTeamRank != null ? "leagueTeamRank=" + leagueTeamRank + ", " : "")
+                + (achievements != null ? "achievements=" + achievements + ", " : "")
+                + (achievementsTotal != null ? "achievementsTotal=" + achievementsTotal + ", " : "")
+                + (challengesWon != null ? "challengesWon=" + challengesWon + ", " : "")
+                + (challengesTotal != null ? "challengesTotal=" + challengesTotal + ", " : "")
+                + (hardwareMasterRank != null ? "hardwareMasterRank=" + hardwareMasterRank : "") + "]";
+    }
+
 }

@@ -187,4 +187,15 @@ public class NotificationDTO implements Serializable {
         this.image = image;
     }
 
+    @Override
+    public String toString() {
+        return "NotificationDTO [" + (id != null ? "id=" + id + ", " : "") + (userId != null ? "userId=" + userId + ", " : "")
+                + (user != null ? "user=" + user + ", " : "") + (teamId != null ? "teamId=" + teamId + ", " : "") + (team != null ? "team=" + team + ", " : "")
+                + (libraryItemId != null ? "libraryItemId=" + libraryItemId + ", " : "") + (resultId != null ? "resultId=" + resultId + ", " : "")
+                + (contestId != null ? "contestId=" + contestId + ", " : "") + (contest != null ? "contest=" + contest + ", " : "")
+                + (message != null ? "message=" + message + ", " : "") + (manufacturerId != null ? "manufacturerId=" + manufacturerId + ", " : "")
+                + (date != null ? "date=" + date + ", " : "") + "type=" + type + ", " + (link != null ? "link=" + link + ", " : "") + "votes=" + votes + ", "
+                + (parentNotificationId != null ? "parentNotificationId=" + parentNotificationId + ", " : "") + (image != null ? "image=" + image : "") + "]";
+    }
+
 }

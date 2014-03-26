@@ -152,4 +152,19 @@ public class DeviceInfoDTO {
         this.processorFamily = processorFamily;
     }
 
+    @Override
+    public String toString() {
+        return "DeviceInfoDTO [" + (id != null ? "id=" + id + ", " : "") + (soCid != null ? "soCid=" + soCid + ", " : "")
+                + (videocardId != null ? "videocardId=" + videocardId + ", " : "") + (processor != null ? "processor=" + processor + ", " : "")
+                + (processorId != null ? "processorId=" + processorId + ", " : "")
+                + (processorCoreId != null ? "processorCoreId=" + processorCoreId + ", " : "")
+                + (processorSubFamilyId != null ? "processorSubFamilyId=" + processorSubFamilyId + ", " : "")
+                + (processorFamilyId != null ? "processorFamilyId=" + processorFamilyId + ", " : "")
+                + (processorCore != null ? "processorCore=" + processorCore + ", " : "")
+                + (processorSubFamily != null ? "processorSubFamily=" + processorSubFamily + ", " : "")
+                + (processorFamily != null ? "processorFamily=" + processorFamily + ", " : "")
+                + (processorClock != null ? "processorClock=" + processorClock + ", " : "") + (videocard != null ? "videocard=" + videocard + ", " : "")
+                + (ram != null ? "ram=" + ram + ", " : "") + (name != null ? "name=" + name : "") + "]";
+    }
+
 }

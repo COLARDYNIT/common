@@ -13,6 +13,7 @@ public class DeviceInfoWithRecordsDTO implements Serializable {
     private static final long serialVersionUID = 1L;
     private DeviceInfoDTO device;
     private Map<RecordType, DeviceRecordDTO> hwbotPrimeRecords;
+    private Map<RecordType, DeviceRecordDTO> hwbotPrimeRecordsPersonal;
 
     public DeviceInfoDTO getDevice() {
         return device;
@@ -28,6 +29,14 @@ public class DeviceInfoWithRecordsDTO implements Serializable {
 
     public void setHwbotPrimeRecords(Map<RecordType, DeviceRecordDTO> hwbotPrimeRecords) {
         this.hwbotPrimeRecords = hwbotPrimeRecords;
+    }
+
+    public Map<RecordType, DeviceRecordDTO> getHwbotPrimeRecordsPersonal() {
+        return hwbotPrimeRecordsPersonal;
+    }
+
+    public void setHwbotPrimeRecordsPersonal(Map<RecordType, DeviceRecordDTO> hwbotPrimeRecordsPersonal) {
+        this.hwbotPrimeRecordsPersonal = hwbotPrimeRecordsPersonal;
     }
 
     @Override
