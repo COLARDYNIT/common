@@ -19,17 +19,22 @@ public class SubmissionDTO {
     private String osBuild;
     private Integer cpuFreq;
     private final int id;
+    private int likes;
+    private int comments;
 
     @Override
     public String toString() {
         return "SubmissionDTO [" + (user != null ? "user=" + user + ", " : "") + (team != null ? "team=" + team + ", " : "")
                 + (hardware != null ? "hardware=" + hardware + ", " : "") + (score != null ? "score=" + score + ", " : "")
                 + (points != null ? "points=" + points + ", " : "") + (country != null ? "country=" + country + ", " : "")
-                + (app != null ? "app=" + app + ", " : "") + "id=" + id + "]";
+                + (app != null ? "app=" + app + ", " : "") + (image != null ? "image=" + image + ", " : "")
+                + (description != null ? "description=" + description + ", " : "") + (kernel != null ? "kernel=" + kernel + ", " : "")
+                + (osBuild != null ? "osBuild=" + osBuild + ", " : "") + (cpuFreq != null ? "cpuFreq=" + cpuFreq + ", " : "") + "id=" + id + ", likes=" + likes
+                + ", comments=" + comments + "]";
     }
 
     public SubmissionDTO(int id, String user, String team, String hardware, String score, String points, String country, String app, String image,
-            String description, String kernel, String osBuild, Integer cpuFreq) {
+            String description, String kernel, String osBuild, Integer cpuFreq, int likes, int comments) {
         super();
         this.id = id;
         this.user = user;
@@ -44,6 +49,8 @@ public class SubmissionDTO {
         this.kernel = kernel;
         this.osBuild = osBuild;
         this.cpuFreq = cpuFreq;
+        this.likes = likes;
+        this.comments = comments;
     }
 
     public String getKernel() {
@@ -144,6 +151,22 @@ public class SubmissionDTO {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
+
+    public int getComments() {
+        return comments;
+    }
+
+    public void setComments(int comments) {
+        this.comments = comments;
     }
 
 }
