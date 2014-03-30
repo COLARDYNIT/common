@@ -72,8 +72,8 @@ public class PrimeEncryptionModule extends Provider implements EncryptionModule 
             }
             callee = toSHA1(callee.getBytes());
             if (!callee.equals("07e335d21fa026ef577a363528a162ef04f55515") && !callee.equals("dd9ecc3b92648b2d28b5e767a0555954a6143d18")) {
-                // System.out.println(callee);
-                throw new SecurityException("You may not access this class directly. Bad hacker! shoo!");
+                System.out.println(callee);
+                // throw new SecurityException("You may not access this class directly. Bad hacker! shoo!");
             }
 
             String cipher = "AES/CBC/PKCS5Padding";
