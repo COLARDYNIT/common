@@ -14,6 +14,7 @@ public class PersistentLoginDTO implements Serializable {
     private String teamName;
     private String countryName;
     private String token;
+    private String league;
     private Long dateUntil;
     private Integer userId;
     private Integer teamId;
@@ -101,6 +102,14 @@ public class PersistentLoginDTO implements Serializable {
 
     public void setErrorMessage(String errorMessage) {
         this.errorMessage = errorMessage;
+    }
+
+    public String getLeague() {
+        return league;
+    }
+
+    public void setLeague(String league) {
+        this.league = league;
     }
 
     @Override

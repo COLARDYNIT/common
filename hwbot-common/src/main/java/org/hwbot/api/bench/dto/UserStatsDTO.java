@@ -13,8 +13,11 @@ public class UserStatsDTO implements Serializable {
     private Float leaguePoints;
     private Float teamPowerPoints;
     private Integer leagueRank;
+    private Integer leagueRankTotal;
     private Integer leagueNationalRank;
+    private Integer leagueNationalRankTotal;
     private Integer leagueTeamRank;
+    private Integer leagueTeamRankTotal;
     private Integer achievements;
     private Integer achievementsTotal;
     private Integer challengesWon;
@@ -99,6 +102,30 @@ public class UserStatsDTO implements Serializable {
 
     public void setHardwareMasterRank(Integer hardwareMasterRank) {
         this.hardwareMasterRank = hardwareMasterRank;
+    }
+
+    public Integer getLeagueRankTotal() {
+        return leagueRankTotal;
+    }
+
+    public void setLeagueRankTotal(Integer leagueRankTotal) {
+        this.leagueRankTotal = leagueRankTotal;
+    }
+
+    public Integer getLeagueNationalRankTotal() {
+        return leagueNationalRankTotal;
+    }
+
+    public void setLeagueNationalRankTotal(Integer leagueNationalRankTotal) {
+        this.leagueNationalRankTotal = leagueNationalRankTotal;
+    }
+
+    public Integer getLeagueTeamRankTotal() {
+        return leagueTeamRankTotal;
+    }
+
+    public void setLeagueTeamRankTotal(Integer leagueTeamRankTotal) {
+        this.leagueTeamRankTotal = leagueTeamRankTotal;
     }
 
     @Override
