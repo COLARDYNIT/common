@@ -11,6 +11,7 @@ public class PersistentLoginDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String userName;
+    private String avatar;
     private String teamName;
     private String countryName;
     private String token;
@@ -112,10 +113,19 @@ public class PersistentLoginDTO implements Serializable {
         this.league = league;
     }
 
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
     @Override
     public String toString() {
-        return "PersistentLoginDTO [" + (userName != null ? "userName=" + userName + ", " : "") + (teamName != null ? "teamName=" + teamName + ", " : "")
-                + (countryName != null ? "countryName=" + countryName + ", " : "") + (token != null ? "token=" + token + ", " : "")
+        return "PersistentLoginDTO [" + (userName != null ? "userName=" + userName + ", " : "") + (avatar != null ? "avatar=" + avatar + ", " : "")
+                + (teamName != null ? "teamName=" + teamName + ", " : "") + (countryName != null ? "countryName=" + countryName + ", " : "")
+                + (token != null ? "token=" + token + ", " : "") + (league != null ? "league=" + league + ", " : "")
                 + (dateUntil != null ? "dateUntil=" + dateUntil + ", " : "") + (userId != null ? "userId=" + userId + ", " : "")
                 + (teamId != null ? "teamId=" + teamId + ", " : "") + (countryId != null ? "countryId=" + countryId : "") + "]";
     }
