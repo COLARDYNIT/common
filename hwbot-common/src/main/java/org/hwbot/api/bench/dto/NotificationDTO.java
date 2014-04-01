@@ -1,7 +1,9 @@
 package org.hwbot.api.bench.dto;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
@@ -28,6 +30,10 @@ public class NotificationDTO implements Serializable {
     private int votes;
     private String parentNotificationId;
     private String image;
+
+    private List<NotificationDTO> comments = new ArrayList<NotificationDTO>();
+    private List<NotificationDTO> pointChanges = new ArrayList<NotificationDTO>();
+    private List<NotificationDTO> rankChanges = new ArrayList<NotificationDTO>();
 
     public NotificationDTO() {
         super();
@@ -196,6 +202,30 @@ public class NotificationDTO implements Serializable {
                 + (message != null ? "message=" + message + ", " : "") + (manufacturerId != null ? "manufacturerId=" + manufacturerId + ", " : "")
                 + (date != null ? "date=" + date + ", " : "") + "type=" + type + ", " + (link != null ? "link=" + link + ", " : "") + "votes=" + votes + ", "
                 + (parentNotificationId != null ? "parentNotificationId=" + parentNotificationId + ", " : "") + (image != null ? "image=" + image : "") + "]";
+    }
+
+    public List<NotificationDTO> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<NotificationDTO> comments) {
+        this.comments = comments;
+    }
+
+    public List<NotificationDTO> getPointChanges() {
+        return pointChanges;
+    }
+
+    public void setPointChanges(List<NotificationDTO> pointChanges) {
+        this.pointChanges = pointChanges;
+    }
+
+    public List<NotificationDTO> getRankChanges() {
+        return rankChanges;
+    }
+
+    public void setRankChanges(List<NotificationDTO> rankChanges) {
+        this.rankChanges = rankChanges;
     }
 
 }
