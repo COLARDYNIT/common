@@ -17,6 +17,7 @@ public class SubmissionDTO {
     private String description;
     private String kernel;
     private String osBuild;
+    private String device;
     private Integer cpuFreq;
     private final int id;
     private int likes;
@@ -167,6 +168,14 @@ public class SubmissionDTO {
 
     public void setComments(int comments) {
         this.comments = comments;
+    }
+
+    public String getDevice() {
+        return device;
+    }
+
+    public void setDevice(String device) {
+        this.device = device;
     }
 
 }

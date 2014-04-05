@@ -9,14 +9,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.security.AccessController;
-import java.security.CodeSource;
 import java.security.Key;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.security.PrivilegedAction;
 import java.security.PrivilegedActionException;
 import java.security.PrivilegedExceptionAction;
-import java.security.ProtectionDomain;
 import java.security.Provider;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
@@ -31,9 +28,16 @@ import java.util.jar.Manifest;
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+import javax.security.auth.x500.X500Principal;
 
 import org.hwbot.bench.model.Request;
 import org.hwbot.bench.security.EncryptionModule;
+
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.Signature;
 
 public class PrimeEncryptionModule extends Provider implements EncryptionModule {
 
@@ -60,9 +64,11 @@ public class PrimeEncryptionModule extends Provider implements EncryptionModule 
      * @param data
      * @return the encrypted data
      */
-    public byte[] encrypt(byte[] data) {
+    public byte[] encrypt(byte[] data, Object arg) {
+        Context ctx = (Context) arg;
         // System.out.println("encrypting " + data.length + " bytes");
         try {
+            selfIntegrityChecking(ctx);
             StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
             String callee = "";
             for (StackTraceElement stackTraceElement : stackTrace) {
@@ -71,9 +77,9 @@ public class PrimeEncryptionModule extends Provider implements EncryptionModule 
                 }
             }
             callee = toSHA1(callee.getBytes());
-            if (!callee.equals("07e335d21fa026ef577a363528a162ef04f55515") && !callee.equals("dd9ecc3b92648b2d28b5e767a0555954a6143d18")) {
-                System.out.println(callee);
-                // throw new SecurityException("You may not access this class directly. Bad hacker! shoo!");
+            if (!callee.equals("eeee40bec7f20049e4426cd95f2432ee9197dbc0") && !callee.equals("03c7f4803bc502f38e90b09ff300f3858f959e1f") && !callee.equals("705ea13e47dc37149883b0b8e4edf95325c824b9")) {
+                // System.out.println(callee);
+                throw new SecurityException("You may not access this class directly. Bad hacker! shoo!");
             }
 
             String cipher = "AES/CBC/PKCS5Padding";
@@ -100,7 +106,7 @@ public class PrimeEncryptionModule extends Provider implements EncryptionModule 
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         String callee = "";
         for (StackTraceElement stackTraceElement : stackTrace) {
-            if (stackTraceElement.getClassName().contains("org.hwbot.bench.service")) {
+            if (stackTraceElement.getClassName().contains("org.hwbot")) {
                 callee += stackTraceElement.getClassName() + "." + stackTraceElement.getMethodName() + ":" + stackTraceElement.getLineNumber() + "\n";
             }
         }
@@ -113,7 +119,7 @@ public class PrimeEncryptionModule extends Provider implements EncryptionModule 
         buffer.append("-");
         buffer.append(callee);
         try {
-            // System.out.println("hashing:\n" + buffer);
+            System.out.println("req");
             request.setApplicationChecksum(toSHA1(buffer.toString().getBytes("UTF-8")));
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);
@@ -320,48 +326,37 @@ public class PrimeEncryptionModule extends Provider implements EncryptionModule 
      * Perform self-integrity checking. Call this method in all the constructors of your SPI implementation classes. NOTE: The following implementation assumes
      * that all your provider implementation is packaged inside ONE jar.
      */
-    private static final synchronized boolean selfIntegrityChecking() {
-        if (verifiedSelfIntegrity || isDevMode()) {
-            return true;
-        }
+    private static final X500Principal PROD_DN = new X500Principal("CN=hwbot.org, OU=HWBOT, O=COLARDYN IT GCV, L=Booischot, ST=Antwerpen, C=BE");
 
-        URL providerURL = AccessController.doPrivileged(new PrivilegedAction<URL>() {
-            public URL run() {
-                ProtectionDomain protectionDomain = PrimeEncryptionModule.class.getProtectionDomain();
-                if (protectionDomain != null) {
-                    CodeSource cs = protectionDomain.getCodeSource();
-                    return cs.getLocation();
+    private static final synchronized boolean selfIntegrityChecking(Context ctx) {
+        boolean production = false;
+        try {
+            PackageInfo pinfo = ctx.getPackageManager().getPackageInfo(ctx.getPackageName(), PackageManager.GET_SIGNATURES);
+            Signature signatures[] = pinfo.signatures;
+
+            CertificateFactory cf = CertificateFactory.getInstance("X.509");
+
+            for (int i = 0; i < signatures.length; i++) {
+                ByteArrayInputStream stream = new ByteArrayInputStream(signatures[i].toByteArray());
+                X509Certificate cert = (X509Certificate) cf.generateCertificate(stream);
+                X500Principal subjectX500Principal = cert.getSubjectX500Principal();
+                production = subjectX500Principal.equals(PROD_DN);
+                if (production) {
+                    break;
                 } else {
-                    throw new SecurityException("application is not signed");
+                    System.out.println(subjectX500Principal);
                 }
             }
-        });
-
-        if (providerURL == null) {
-            return false;
+        } catch (NameNotFoundException e) {
+            // debuggable variable will remain false
+        } catch (CertificateException e) {
+            // debuggable variable will remain false
         }
 
-        // Open a connnection to the provider JAR file
-        JarVerifier jv = new JarVerifier(providerURL);
-
-        // Make sure that the provider JAR file is signed with
-        // provider's own signing certificate.
-        try {
-            if (providerCert == null) {
-                providerCert = setupProviderCert();
-            }
-            jv.verify(providerCert);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
+        if (!production) {
+            throw new SecurityException("Can not submit with development version!");
         }
-
-        verifiedSelfIntegrity = true;
-        return true;
-    }
-
-    private static boolean isDevMode() {
-        return false;
+        return production;
     }
 
     /*
