@@ -8,6 +8,12 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 import org.hwbot.api.bench.dto.DeviceRecordDTO.RecordType;
 
+/**
+ * For (android) benchmark app
+ * 
+ * @author frederik
+ * 
+ */
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class DeviceRecordsDTO implements Serializable {
 

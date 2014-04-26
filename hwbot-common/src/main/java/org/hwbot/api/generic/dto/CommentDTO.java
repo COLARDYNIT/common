@@ -3,6 +3,12 @@ package org.hwbot.api.generic.dto;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 
+/**
+ * Used for android app and esports.
+ * 
+ * @author frederik
+ * 
+ */
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class CommentDTO {
 
@@ -11,6 +17,8 @@ public class CommentDTO {
     private final Long postId;
     private final long time;
     private final String timeAgo;
+    private int score;
+    private String avatar;
 
     public CommentDTO(String author, String content, Long postId, long time, String timeAgo) {
         this.author = author;
@@ -18,6 +26,22 @@ public class CommentDTO {
         this.postId = postId;
         this.time = time;
         this.timeAgo = timeAgo;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 
     public String getAuthor() {

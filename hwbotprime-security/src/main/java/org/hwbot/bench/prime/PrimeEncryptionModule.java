@@ -66,7 +66,7 @@ public class PrimeEncryptionModule extends Provider implements EncryptionModule 
      */
     public byte[] encrypt(byte[] data, Object arg) {
         Context ctx = (Context) arg;
-        // System.out.println("encrypting " + data.length + " bytes");
+        // // System.out.println("encrypting " + data.length + " bytes");
         try {
             selfIntegrityChecking(ctx);
             StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
@@ -77,8 +77,10 @@ public class PrimeEncryptionModule extends Provider implements EncryptionModule 
                 }
             }
             callee = toSHA1(callee.getBytes());
-            if (!callee.equals("eeee40bec7f20049e4426cd95f2432ee9197dbc0") && !callee.equals("03c7f4803bc502f38e90b09ff300f3858f959e1f") && !callee.equals("705ea13e47dc37149883b0b8e4edf95325c824b9")) {
-                // System.out.println(callee);
+            if (!callee.equals("eeee40bec7f20049e4426cd95f2432ee9197dbc0") && !callee.equals("03c7f4803bc502f38e90b09ff300f3858f959e1f")
+                    && !callee.equals("705ea13e47dc37149883b0b8e4edf95325c824b9") && !callee.equals("7166afccd7a625c379203f63d03db8554abf8602") && !callee.equals("1661258401082527122ad34a5e81b58342c453e4")) {
+                // System.out.println("encrypt: " + callee);
+                // 04-17 00:01:14.559: I/System.out(32596): encrypt: 1661258401082527122ad34a5e81b58342c453e4 04-17 00:02:53.971: I/System.out(354): encrypt: 7166afccd7a625c379203f63d03db8554abf8602
                 throw new SecurityException("You may not access this class directly. Bad hacker! shoo!");
             }
 
@@ -95,7 +97,7 @@ public class PrimeEncryptionModule extends Provider implements EncryptionModule 
             } else if ("ECB".equals(config[1])) {
                 c.init(Cipher.ENCRYPT_MODE, encryptKey);
             }
-            // System.out.println("encryption ok, encrypting...");
+            // // System.out.println("encryption ok, encrypting...");
             return c.doFinal(data);
         } catch (Exception e) {
             throw new RuntimeException("Failed to encrypt: " + e, e);
@@ -119,7 +121,7 @@ public class PrimeEncryptionModule extends Provider implements EncryptionModule 
         buffer.append("-");
         buffer.append(callee);
         try {
-            System.out.println("req");
+            // System.out.println("checksum: " + callee);
             request.setApplicationChecksum(toSHA1(buffer.toString().getBytes("UTF-8")));
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException(e);
@@ -344,7 +346,7 @@ public class PrimeEncryptionModule extends Provider implements EncryptionModule 
                 if (production) {
                     break;
                 } else {
-                    System.out.println(subjectX500Principal);
+                    // System.out.println(subjectX500Principal);
                 }
             }
         } catch (NameNotFoundException e) {
@@ -474,7 +476,7 @@ public class PrimeEncryptionModule extends Provider implements EncryptionModule 
                         // || certChain[0].getSerialNumber().longValue() == 2136041862044055l
                         if (certChain[0].equals(targetCert)) {
                             // Stop since one trusted signer is found.
-                            // System.out.println("Signature verified with: " + certChain[0].getSubjectDN());
+                            // // System.out.println("Signature verified with: " + certChain[0].getSubjectDN());
                             signedAsExpected = true;
                             break;
                         }

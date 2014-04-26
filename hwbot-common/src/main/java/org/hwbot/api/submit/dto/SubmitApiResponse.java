@@ -8,6 +8,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 
+/**
+ * Submission and versioning API, for benchmark clients
+ * 
+ * @author frederik
+ *
+ */
 @XmlRootElement(name = "response")
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class SubmitApiResponse implements Serializable {

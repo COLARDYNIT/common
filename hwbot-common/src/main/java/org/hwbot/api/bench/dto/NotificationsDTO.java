@@ -7,6 +7,12 @@ import java.util.List;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 
+/**
+ * For (android) benchmark app
+ * 
+ * @author frederik
+ * 
+ */
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class NotificationsDTO implements Serializable {
 
