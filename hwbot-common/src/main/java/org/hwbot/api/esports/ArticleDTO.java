@@ -34,6 +34,9 @@ public class ArticleDTO {
     private List<String> tags;
     private List<CommentDTO> comments;
 
+    public ArticleDTO() {
+    }
+
     /**
      * Constructor for overview
      */
