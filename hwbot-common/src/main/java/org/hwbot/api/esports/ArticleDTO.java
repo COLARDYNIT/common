@@ -135,6 +135,58 @@ public class ArticleDTO {
         return comments;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public void setTime(long time) {
+        this.time = time;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public void setExcerpt(String excerpt) {
+        this.excerpt = excerpt;
+    }
+
+    public void setTinyPicture(String tinyPicture) {
+        this.tinyPicture = tinyPicture;
+    }
+
+    public void setSmallPicture(String smallPicture) {
+        this.smallPicture = smallPicture;
+    }
+
+    public void setLargePicture(String largePicture) {
+        this.largePicture = largePicture;
+    }
+
+    public void setAmountOfComments(int amountOfComments) {
+        this.amountOfComments = amountOfComments;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags;
+    }
+
+    public void setComments(List<CommentDTO> comments) {
+        this.comments = comments;
+    }
+
     public String getDateTime() {
         return new SimpleDateFormat("'<time datetime=\"'yyyy-MM-dd'\">'d'<sup>" + StringUtil.getDayOfMonthSuffix(time) + "</sup> 'MMM', 'yyyy'</time>'")
                 .format(new Date(time));
