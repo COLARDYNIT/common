@@ -3,12 +3,11 @@
 	<groupId>org.hwbot</groupId>
 	<artifactId>common</artifactId>
 	<packaging>jar</packaging>
-	<version>5.3.1</version>
+	<version>5.3.2-SNAPSHOT</version>
 	<scm>
 		<developerConnection>scm:git:git@github.com:COLARDYNIT/common.git</developerConnection>
 		<url>https://github.com/COLARDYNIT/HWBOT</url>
-      <tag>common-5.3.1</tag>
-  </scm>
+  	</scm>
 	<issueManagement>
 		<system>JIRA</system>
 		<url>http://bugs.hwbot.org/browse/HWBOT</url>
