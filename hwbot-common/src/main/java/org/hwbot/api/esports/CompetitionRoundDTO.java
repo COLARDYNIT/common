@@ -1,5 +1,6 @@
 package org.hwbot.api.esports;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -219,6 +220,30 @@ public class CompetitionRoundDTO {
 
     public void setRoundRanking(List<RoundRankDTO> roundRanking) {
         this.roundRanking = roundRanking;
+    }
+
+    public String getStartDayOfMonth() {
+        return new SimpleDateFormat("d").format(startdate);
+    }
+
+    public String getEndDayOfMonth() {
+        return new SimpleDateFormat("d").format(enddate);
+    }
+
+    public String getStartMonth() {
+        return new SimpleDateFormat("MMM").format(startdate);
+    }
+
+    public String getEndMonth() {
+        return new SimpleDateFormat("MMM").format(enddate);
+    }
+
+    public boolean isActive() {
+        return (this.getStartdate() != null && this.getStartdate().getTime() > System.currentTimeMillis());
+    }
+
+    public boolean isPassed() {
+        return (this.getEnddate() == null || this.getEnddate().getTime() > System.currentTimeMillis());
     }
 
 }
