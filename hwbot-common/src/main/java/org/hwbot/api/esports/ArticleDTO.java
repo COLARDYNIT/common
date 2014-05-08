@@ -171,4 +171,5 @@ public class ArticleDTO {
     public String getSafeName() {
         return StringUtil.makeUrlSafe(this.getTitle());
     }
+
 }
