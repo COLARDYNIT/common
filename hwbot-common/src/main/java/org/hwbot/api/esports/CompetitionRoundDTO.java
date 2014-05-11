@@ -20,8 +20,8 @@ public class CompetitionRoundDTO {
     private int contestId;
     private Integer parentContestId;
 
-    private Date startdate;
-    private Date enddate;
+    private Date startDate;
+    private Date endDate;
 
     private String name;
     private String url;
@@ -50,8 +50,8 @@ public class CompetitionRoundDTO {
         super();
         this.contestId = contestId;
         this.parentContestId = parentContestId;
-        this.startdate = startdate;
-        this.enddate = enddate;
+        this.startDate = startdate;
+        this.endDate = enddate;
         this.name = name;
         this.url = url;
         this.competitorType = competitorType;
@@ -70,12 +70,12 @@ public class CompetitionRoundDTO {
         return parentContestId;
     }
 
-    public Date getStartdate() {
-        return startdate;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public Date getEnddate() {
-        return enddate;
+    public Date getEndDate() {
+        return endDate;
     }
 
     public String getName() {
@@ -146,12 +146,12 @@ public class CompetitionRoundDTO {
         this.parentContestId = parentContestId;
     }
 
-    public void setStartdate(Date startdate) {
-        this.startdate = startdate;
+    public void setStartDate(Date startdate) {
+        this.startDate = startdate;
     }
 
-    public void setEnddate(Date enddate) {
-        this.enddate = enddate;
+    public void setEndDate(Date enddate) {
+        this.endDate = enddate;
     }
 
     public void setName(String name) {
@@ -223,27 +223,27 @@ public class CompetitionRoundDTO {
     }
 
     public String getStartDayOfMonth() {
-        return new SimpleDateFormat("d").format(startdate);
+        return new SimpleDateFormat("d").format(startDate);
     }
 
     public String getEndDayOfMonth() {
-        return new SimpleDateFormat("d").format(enddate);
+        return new SimpleDateFormat("d").format(endDate);
     }
 
     public String getStartMonth() {
-        return new SimpleDateFormat("MMM").format(startdate);
+        return new SimpleDateFormat("MMM").format(startDate);
     }
 
     public String getEndMonth() {
-        return new SimpleDateFormat("MMM").format(enddate);
+        return new SimpleDateFormat("MMM").format(endDate);
     }
 
     public boolean isActive() {
-        return (this.getStartdate() != null && this.getStartdate().getTime() > System.currentTimeMillis());
+        return !isPassed() && (this.getStartDate() != null && this.getStartDate().getTime() < System.currentTimeMillis());
     }
 
     public boolean isPassed() {
-        return (this.getEnddate() == null || this.getEnddate().getTime() > System.currentTimeMillis());
+        return (this.getEndDate() == null || this.getEndDate().getTime() <= System.currentTimeMillis());
     }
 
 }
