@@ -42,6 +42,58 @@ public class RoadMapDTO {
         this.rounds = rounds;
     }
 
+    public CompetitionRoundDTO getCurrent() {
+        CompetitionRoundDTO current = null;
+        for (CompetitionRoundDTO round : getRounds()) {
+            // active one
+            if (round.isActive()) {
+                current = round;
+                break;
+            }
+        }
+        if (current == null) {
+            // none active, last one passed
+            for (CompetitionRoundDTO round : getRounds()) {
+                if (round.isPassed() && (current == null || round.getStartDate().after(current.getStartDate()))) {
+                    current = round;
+                    break;
+                }
+            }
+        }
+        if (current == null) {
+            // not yet started, first one
+            if (getRounds().size() > 0) {
+                current = getRounds().get(0);
+            }
+        }
+        return current;
+    }
+
+    public int getCurrentIndex() {
+        CompetitionRoundDTO current = getCurrent();
+        int index = 1;
+        if (current != null) {
+            for (CompetitionRoundDTO round : getRounds()) {
+                if (round.equals(current)) {
+                    break;
+                }
+                index++;
+            }
+        }
+        return index;
+    }
+
+    public int getPercentComplete() {
+        int total = getRounds().size();
+        float passed = 0;
+        for (CompetitionRoundDTO round : getRounds()) {
+            if (round.isPassed()) {
+                passed++;
+            }
+        }
+        return ((int) ((passed / total) * 100));
+    }
+
     @Override
     public String toString() {
         return "RoadMapDTO [" + (name != null ? "name=" + name + ", " : "") + (rounds != null ? "rounds=" + rounds : "") + "]";
