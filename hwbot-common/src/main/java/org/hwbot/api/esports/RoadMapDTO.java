@@ -15,16 +15,27 @@ import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 public class RoadMapDTO {
 
     private String name;
+    private String type;
     private List<CompetitionRoundDTO> rounds;
     private List<RankDTO> ranking;
 
     public RoadMapDTO() {
+        super();
     }
 
-    public RoadMapDTO(String name, List<CompetitionRoundDTO> rounds) {
+    public RoadMapDTO(String type, String name, List<CompetitionRoundDTO> rounds) {
         super();
+        this.type = type;
         this.name = name;
         this.rounds = rounds;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getName() {
