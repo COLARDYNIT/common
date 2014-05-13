@@ -34,7 +34,7 @@ public class CompetitionStageDTO {
 
     private List<String> limitations;
     private List<SubmissionDTO> latestSubmissions;
-    private List<StageRankDTO> stageRanking;
+    private List<RankDTO> stageRanking;
 
     public CompetitionStageDTO() {
         super();
@@ -42,7 +42,7 @@ public class CompetitionStageDTO {
 
     public CompetitionStageDTO(int contestBenchmarkId, String label, long startDate, long endDate, int applicationId, int contestId, String pointsDistribution,
             CompetitionRoundDTO round, List<SubmissionDTO> submissions, int participants, String timeLeft, String ends, List<String> limitations,
-            List<SubmissionDTO> latestSubmissions, List<StageRankDTO> stageRanking) {
+            List<SubmissionDTO> latestSubmissions, List<RankDTO> stageRanking) {
         super();
         this.contestBenchmarkId = contestBenchmarkId;
         this.label = label;
@@ -173,11 +173,11 @@ public class CompetitionStageDTO {
         this.latestSubmissions = latestSubmissions;
     }
 
-    public List<StageRankDTO> getStageRanking() {
+    public List<RankDTO> getStageRanking() {
         return stageRanking;
     }
 
-    public void setStageRanking(List<StageRankDTO> stageRanking) {
+    public void setStageRanking(List<RankDTO> stageRanking) {
         this.stageRanking = stageRanking;
     }
 

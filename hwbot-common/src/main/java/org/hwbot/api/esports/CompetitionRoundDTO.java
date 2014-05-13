@@ -43,7 +43,7 @@ public class CompetitionRoundDTO {
 
     private List<CompetitionStageDTO> stages;
     private List<UserDTO> participants;
-    private List<RoundRankDTO> roundRanking;
+    private List<RankDTO> roundRanking;
 
     public CompetitionRoundDTO(int contestId, Integer parentContestId, Date startdate, Date enddate, String name, String safeName, String competitorType,
             boolean openParticipation, boolean closed, String pictureLarge, String partnerPicture, Integer level) {
@@ -158,8 +158,8 @@ public class CompetitionRoundDTO {
         this.name = name;
     }
 
-    public void setSafeName(String url) {
-        this.safeName = url;
+    public void setSafeName(String safeName) {
+        this.safeName = safeName;
     }
 
     public void setCompetitorType(String competitorType) {
@@ -214,11 +214,11 @@ public class CompetitionRoundDTO {
         this.participants = participants;
     }
 
-    public List<RoundRankDTO> getRoundRanking() {
+    public List<RankDTO> getRoundRanking() {
         return roundRanking;
     }
 
-    public void setRoundRanking(List<RoundRankDTO> roundRanking) {
+    public void setRoundRanking(List<RankDTO> roundRanking) {
         this.roundRanking = roundRanking;
     }
 

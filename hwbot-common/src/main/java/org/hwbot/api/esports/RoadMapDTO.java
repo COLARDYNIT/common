@@ -16,6 +16,7 @@ public class RoadMapDTO {
 
     private String name;
     private List<CompetitionRoundDTO> rounds;
+    private List<CompetitionRoundRankDTO> ranking;
 
     public RoadMapDTO() {
     }
