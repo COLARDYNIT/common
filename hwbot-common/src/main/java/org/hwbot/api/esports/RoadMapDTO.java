@@ -16,7 +16,7 @@ public class RoadMapDTO {
 
     private String name;
     private List<CompetitionRoundDTO> rounds;
-    private List<CompetitionRoundRankDTO> ranking;
+    private List<RankDTO> ranking;
 
     public RoadMapDTO() {
     }
@@ -84,15 +84,25 @@ public class RoadMapDTO {
         return index;
     }
 
+    public List<RankDTO> getRanking() {
+        return ranking;
+    }
+
+    public void setRanking(List<RankDTO> ranking) {
+        this.ranking = ranking;
+    }
+
     public int getPercentComplete() {
-        int total = getRounds().size();
-        float passed = 0;
-        for (CompetitionRoundDTO round : getRounds()) {
-            if (round.isPassed()) {
-                passed++;
-            }
-        }
-        return ((int) ((passed / total) * 100));
+        return 0;
+        // TODO reliable way to find correct percentage
+        // int total = getRounds().size();
+        // float passed = 0;
+        // for (CompetitionRoundDTO round : getRounds()) {
+        // if (round.isPassed()) {
+        // passed++;
+        // }
+        // }
+        // return ((int) ((passed / total) * 100));
     }
 
     @Override
