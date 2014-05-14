@@ -10,6 +10,9 @@ public class SubmissionDTO {
     private String team;
     private String hardware;
     private String score;
+    private String unit;
+    private String scoreType;
+    private Integer hour, minute, second, msec;
     private String points;
     private String country;
     private String app;
@@ -34,14 +37,13 @@ public class SubmissionDTO {
                 + ", comments=" + comments + "]";
     }
 
-    public SubmissionDTO(int id, String user, String team, String hardware, String score, String points, String country, String app, String image,
-            String description, String kernel, String osBuild, Integer cpuFreq, int likes, int comments) {
+    public SubmissionDTO(int id, String user, String team, String hardware, String points, String country, String app, String image, String description,
+            String kernel, String osBuild, Integer cpuFreq, int likes, int comments) {
         super();
         this.id = id;
         this.user = user;
         this.team = team;
         this.hardware = hardware;
-        this.score = score;
         this.points = points;
         this.country = country;
         this.app = app;
@@ -180,6 +182,54 @@ public class SubmissionDTO {
 
     public void setDevice(String device) {
         this.device = device;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public String getScoreType() {
+        return scoreType;
+    }
+
+    public void setScoreType(String scoreType) {
+        this.scoreType = scoreType;
+    }
+
+    public Integer getHour() {
+        return hour;
+    }
+
+    public void setHour(Integer hour) {
+        this.hour = hour;
+    }
+
+    public Integer getMinute() {
+        return minute;
+    }
+
+    public void setMinute(Integer minute) {
+        this.minute = minute;
+    }
+
+    public Integer getSecond() {
+        return second;
+    }
+
+    public void setSecond(Integer second) {
+        this.second = second;
+    }
+
+    public Integer getMsec() {
+        return msec;
+    }
+
+    public void setMsec(Integer msec) {
+        this.msec = msec;
     }
 
 }
