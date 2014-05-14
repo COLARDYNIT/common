@@ -78,6 +78,10 @@ public class SubmissionDTO {
         this.cpuFreq = cpuFreq;
     }
 
+    public boolean isRemoteImage() {
+        return getImage() != null && getImage().startsWith("http");
+    }
+
     public String getImage() {
         return image;
     }

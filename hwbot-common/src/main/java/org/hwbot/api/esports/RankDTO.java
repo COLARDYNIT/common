@@ -47,6 +47,10 @@ public class RankDTO implements Comparable<RankDTO>, Serializable {
                 + (url != null ? "url=" + url + ", " : "") + (avatar != null ? "avatar=" + avatar : "") + "]";
     }
 
+    public boolean isRemoteAvatar() {
+        return getAvatar() != null && getAvatar().startsWith("http");
+    }
+
     public String getName() {
         return name;
     }
