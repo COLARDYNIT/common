@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
+import org.hwbot.api.generic.dto.SubmissionDTO;
 import org.hwbot.api.generic.dto.UserDTO;
 
 /**
@@ -44,6 +45,7 @@ public class CompetitionRoundDTO {
     private List<CompetitionStageDTO> stages;
     private List<UserDTO> participants;
     private List<RankDTO> roundRanking;
+    private List<SubmissionDTO> latestSubmissions;
 
     public CompetitionRoundDTO(int contestId, Integer parentContestId, Date startdate, Date enddate, String name, String safeName, String competitorType,
             boolean openParticipation, boolean closed, String pictureLarge, String partnerPicture, Integer level) {
@@ -248,6 +250,14 @@ public class CompetitionRoundDTO {
 
     public int getId() {
         return contestId;
+    }
+
+    public List<SubmissionDTO> getLatestSubmissions() {
+        return latestSubmissions;
+    }
+
+    public void setLatestSubmissions(List<SubmissionDTO> latestSubmissions) {
+        this.latestSubmissions = latestSubmissions;
     }
 
 }
