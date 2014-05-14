@@ -246,4 +246,8 @@ public class CompetitionRoundDTO {
         return (this.getEndDate() == null || this.getEndDate().getTime() <= System.currentTimeMillis());
     }
 
+    public int getId() {
+        return contestId;
+    }
+
 }
