@@ -12,7 +12,7 @@ public class SubmissionDTO {
     private String score;
     private String unit;
     private String scoreType;
-    private Integer hour, minute, second, msec;
+    private Integer hour, min, sec, msec;
     private String points;
     private String country;
     private String app;
@@ -208,20 +208,20 @@ public class SubmissionDTO {
         this.hour = hour;
     }
 
-    public Integer getMinute() {
-        return minute;
+    public Integer getMin() {
+        return min;
     }
 
-    public void setMinute(Integer minute) {
-        this.minute = minute;
+    public void setMin(Integer minute) {
+        this.min = minute;
     }
 
-    public Integer getSecond() {
-        return second;
+    public Integer getSec() {
+        return sec;
     }
 
-    public void setSecond(Integer second) {
-        this.second = second;
+    public void setSec(Integer second) {
+        this.sec = second;
     }
 
     public Integer getMsec() {
