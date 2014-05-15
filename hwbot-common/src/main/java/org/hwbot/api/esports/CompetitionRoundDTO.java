@@ -35,6 +35,8 @@ public class CompetitionRoundDTO {
     private String partnerPicture;
 
     private String description;
+    private String excerptLead;
+    private String excerpt;
     private String rules;
 
     private Integer level;
@@ -258,6 +260,22 @@ public class CompetitionRoundDTO {
 
     public void setLatestSubmissions(List<SubmissionDTO> latestSubmissions) {
         this.latestSubmissions = latestSubmissions;
+    }
+
+    public String getExcerptLead() {
+        return excerptLead;
+    }
+
+    public void setExcerptLead(String excerptLead) {
+        this.excerptLead = excerptLead;
+    }
+
+    public String getExcerpt() {
+        return excerpt;
+    }
+
+    public void setExcerpt(String excerpt) {
+        this.excerpt = excerpt;
     }
 
 }
