@@ -6,13 +6,15 @@ import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class SubmissionDTO {
 
+    public static final String UNIT_TIME = "time";
+
     private String user;
     private String team;
     private String hardware;
+    // either one is filled in, not both
     private String score;
-    private String unit;
-    private String scoreType;
     private Integer hour, min, sec, msec;
+    private String unit;
     private String points;
     private String country;
     private String app;
@@ -190,14 +192,6 @@ public class SubmissionDTO {
 
     public void setUnit(String unit) {
         this.unit = unit;
-    }
-
-    public String getScoreType() {
-        return scoreType;
-    }
-
-    public void setScoreType(String scoreType) {
-        this.scoreType = scoreType;
     }
 
     public Integer getHour() {
