@@ -143,4 +143,8 @@ public class RankDTO implements Comparable<RankDTO>, Serializable {
         return images;
     }
 
+    public boolean isRemoteImage() {
+        return getAvatar() != null && getAvatar().startsWith("http");
+    }
+
 }
