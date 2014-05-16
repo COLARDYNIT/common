@@ -24,7 +24,7 @@ public class RankDTO implements Comparable<RankDTO>, Serializable {
     // details
     protected List<SubmissionDTO> submissionDTOs;
     protected String scoreFormatted;
-    protected final List<Integer> images = new ArrayList<Integer>();
+    protected final List<String> images = new ArrayList<String>();
     protected final List<RankDTO> stages = new ArrayList<RankDTO>();
 
     public RankDTO() {
@@ -121,6 +121,26 @@ public class RankDTO implements Comparable<RankDTO>, Serializable {
 
     public List<RankDTO> getStages() {
         return stages;
+    }
+
+    public List<SubmissionDTO> getSubmissionDTOs() {
+        return submissionDTOs;
+    }
+
+    public void setSubmissionDTOs(List<SubmissionDTO> submissionDTOs) {
+        this.submissionDTOs = submissionDTOs;
+    }
+
+    public String getScoreFormatted() {
+        return scoreFormatted;
+    }
+
+    public void setScoreFormatted(String scoreFormatted) {
+        this.scoreFormatted = scoreFormatted;
+    }
+
+    public List<String> getImages() {
+        return images;
     }
 
 }
