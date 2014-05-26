@@ -1,5 +1,7 @@
 package org.hwbot.api.generic.dto;
 
+import java.io.Serializable;
+
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 
@@ -10,7 +12,9 @@ import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
  * 
  */
 @JsonSerialize(include = Inclusion.NON_NULL)
-public class CommentDTO {
+public class CommentDTO implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private final String author;
     private final String content;

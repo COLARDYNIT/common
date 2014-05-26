@@ -1,5 +1,6 @@
 package org.hwbot.api.esports;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -16,7 +17,9 @@ import org.hwbot.api.generic.dto.UserDTO;
  * 
  */
 @JsonSerialize(include = Inclusion.NON_NULL)
-public class CompetitionRoundDTO {
+public class CompetitionRoundDTO implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private int contestId;
     private Integer parentContestId;

@@ -1,5 +1,6 @@
 package org.hwbot.api.esports;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.codehaus.jackson.map.annotate.JsonSerialize;
@@ -13,7 +14,9 @@ import org.hwbot.api.generic.dto.SubmissionDTO;
  * 
  */
 @JsonSerialize(include = Inclusion.NON_NULL)
-public class CompetitionStageDTO {
+public class CompetitionStageDTO implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private int contestBenchmarkId;
     private String label;

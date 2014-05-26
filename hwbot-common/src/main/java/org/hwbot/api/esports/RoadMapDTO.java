@@ -1,5 +1,6 @@
 package org.hwbot.api.esports;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.codehaus.jackson.map.annotate.JsonSerialize;
@@ -12,8 +13,9 @@ import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
  * 
  */
 @JsonSerialize(include = Inclusion.NON_NULL)
-public class RoadMapDTO {
+public class RoadMapDTO implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     private String name;
     private String type;
     private List<CompetitionRoundDTO> rounds;

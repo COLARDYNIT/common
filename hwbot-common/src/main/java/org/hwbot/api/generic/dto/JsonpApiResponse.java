@@ -1,12 +1,15 @@
 package org.hwbot.api.generic.dto;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 
 @JsonSerialize(include = Inclusion.NON_NULL)
-public class JsonpApiResponse {
+public class JsonpApiResponse implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private String format;
     private String target;

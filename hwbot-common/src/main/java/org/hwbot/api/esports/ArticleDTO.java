@@ -1,5 +1,6 @@
 package org.hwbot.api.esports;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -16,7 +17,9 @@ import org.hwbot.util.StringUtil;
  * 
  */
 @JsonSerialize(include = Inclusion.NON_NULL)
-public class ArticleDTO {
+public class ArticleDTO implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private String title;
     // optional, for index page banner

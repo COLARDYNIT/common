@@ -8,7 +8,6 @@ import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 @XmlRootElement(name = "ranking")
 @XmlType(propOrder = { "user", "score", "date", "team", "proocteam", "country", "league", "ranking", "description" })
 public class ApiRankingInfo {

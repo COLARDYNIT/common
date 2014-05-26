@@ -1,5 +1,6 @@
 package org.hwbot.api.generic.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -14,7 +15,9 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "submission")
 @XmlType(propOrder = { "user", "benchmark", "score", "date", "team", "proocteam", "country", "contest", "stage", "league", "ranking", "state", "description",
         "screenshot", "pictures", "hardware" })
-public class ApiSubmissionInfo {
+public class ApiSubmissionInfo implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     // attributes
     private String id;

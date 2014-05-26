@@ -1,10 +1,14 @@
 package org.hwbot.api.generic.dto;
 
+import java.io.Serializable;
+
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 
 @JsonSerialize(include = Inclusion.NON_NULL)
-public class PointsDTO {
+public class PointsDTO implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     private String name;
     private String points;
     private String country;
