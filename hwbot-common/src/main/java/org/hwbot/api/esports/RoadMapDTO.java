@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
+import org.hwbot.api.generic.dto.UserDTO;
 
 /**
  * Roadmap for pro oc, challenger, etc on esports site.

@@ -7,7 +7,9 @@ import java.util.List;
 
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
+import org.hwbot.api.generic.dto.CountryDTO;
 import org.hwbot.api.generic.dto.SubmissionDTO;
+import org.hwbot.api.generic.dto.TeamDTO;
 import org.hwbot.api.generic.dto.UserDTO;
 
 /**
@@ -51,6 +53,9 @@ public class CompetitionRoundDTO implements Serializable {
     private List<UserDTO> participants;
     private List<RankDTO> roundRanking;
     private List<SubmissionDTO> latestSubmissions;
+    private UserDTO leadingMember;
+    private TeamDTO leadingTeam;
+    private CountryDTO leadingCountry;
 
     public CompetitionRoundDTO(int contestId, Integer parentContestId, Date startdate, Date enddate, String name, String safeName, String competitorType,
             boolean openParticipation, boolean closed, String pictureLarge, String partnerPicture, Integer level) {
@@ -279,6 +284,30 @@ public class CompetitionRoundDTO implements Serializable {
 
     public void setExcerpt(String excerpt) {
         this.excerpt = excerpt;
+    }
+
+    public UserDTO getLeadingMember() {
+        return leadingMember;
+    }
+
+    public void setLeadingMember(UserDTO leadingMember) {
+        this.leadingMember = leadingMember;
+    }
+
+    public TeamDTO getLeadingTeam() {
+        return leadingTeam;
+    }
+
+    public void setLeadingTeam(TeamDTO leadingTeam) {
+        this.leadingTeam = leadingTeam;
+    }
+
+    public CountryDTO getLeadingCountry() {
+        return leadingCountry;
+    }
+
+    public void setLeadingCountry(CountryDTO leadingCountry) {
+        this.leadingCountry = leadingCountry;
     }
 
 }

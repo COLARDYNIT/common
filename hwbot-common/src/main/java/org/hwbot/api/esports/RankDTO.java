@@ -20,6 +20,7 @@ public class RankDTO implements Comparable<RankDTO>, Serializable {
     public String countryCode;
     public String url;
     public String avatar;
+    public int id;
 
     // details
     protected List<SubmissionDTO> submissionDTOs;
@@ -39,6 +40,14 @@ public class RankDTO implements Comparable<RankDTO>, Serializable {
         this.countryCode = countryCode;
         this.url = url;
         this.avatar = avatar;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
