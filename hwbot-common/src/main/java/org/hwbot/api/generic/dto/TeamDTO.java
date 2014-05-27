@@ -22,7 +22,7 @@ public class TeamDTO implements Serializable {
     private String avatar;
     private String country;
 
-    public TeamDTO(String name, String url, int id, String team, String countryFlag, String avatar) {
+    public TeamDTO(String name, String url, int id, String countryFlag, String avatar) {
         super();
         this.name = name;
         this.url = url;

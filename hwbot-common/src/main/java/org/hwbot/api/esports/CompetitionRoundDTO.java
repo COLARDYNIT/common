@@ -21,7 +21,7 @@ import org.hwbot.api.generic.dto.UserDTO;
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class CompetitionRoundDTO implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2L;
 
     private int contestId;
     private Integer parentContestId;
