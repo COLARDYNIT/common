@@ -31,6 +31,7 @@ public class SubmissionDTO implements Serializable {
     private final int id;
     private int likes;
     private int comments;
+    private Integer stageId;
 
     @Override
     public String toString() {
@@ -228,6 +229,14 @@ public class SubmissionDTO implements Serializable {
 
     public void setMsec(Integer msec) {
         this.msec = msec;
+    }
+
+    public Integer getStageId() {
+        return stageId;
+    }
+
+    public void setStageId(Integer stageId) {
+        this.stageId = stageId;
     }
 
 }
