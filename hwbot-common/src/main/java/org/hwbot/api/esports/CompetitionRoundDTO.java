@@ -23,8 +23,8 @@ public class CompetitionRoundDTO implements Serializable {
 
     private static final long serialVersionUID = 2L;
 
-    private int contestId;
-    private Integer parentContestId;
+    private int id;
+    private Integer parentId;
 
     private Date startDate;
     private Date endDate;
@@ -60,8 +60,8 @@ public class CompetitionRoundDTO implements Serializable {
     public CompetitionRoundDTO(int contestId, Integer parentContestId, Date startdate, Date enddate, String name, String safeName, String competitorType,
             boolean openParticipation, boolean closed, String pictureLarge, String partnerPicture, Integer level) {
         super();
-        this.contestId = contestId;
-        this.parentContestId = parentContestId;
+        this.id = contestId;
+        this.parentId = parentContestId;
         this.startDate = startdate;
         this.endDate = enddate;
         this.name = name;
@@ -74,12 +74,8 @@ public class CompetitionRoundDTO implements Serializable {
         this.level = level;
     }
 
-    public int getContestId() {
-        return contestId;
-    }
-
-    public Integer getParentContestId() {
-        return parentContestId;
+    public Integer getParentId() {
+        return parentId;
     }
 
     public Date getStartDate() {
@@ -150,12 +146,12 @@ public class CompetitionRoundDTO implements Serializable {
         return participants;
     }
 
-    public void setContestId(int contestId) {
-        this.contestId = contestId;
+    public void setId(int contestId) {
+        this.id = contestId;
     }
 
-    public void setParentContestId(Integer parentContestId) {
-        this.parentContestId = parentContestId;
+    public void setParentId(Integer parentContestId) {
+        this.parentId = parentContestId;
     }
 
     public void setStartDate(Date startdate) {
@@ -259,7 +255,7 @@ public class CompetitionRoundDTO implements Serializable {
     }
 
     public int getId() {
-        return contestId;
+        return id;
     }
 
     public List<SubmissionDTO> getLatestSubmissions() {

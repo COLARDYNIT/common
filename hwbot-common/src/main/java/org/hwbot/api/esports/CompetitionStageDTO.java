@@ -18,8 +18,10 @@ public class CompetitionStageDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private int contestBenchmarkId;
+    private int id;
     private String label;
+    private String safeName;
+    private String roundSafeName;
     private long startDate;
     private long endDate;
     private int applicationId;
@@ -47,7 +49,7 @@ public class CompetitionStageDTO implements Serializable {
             CompetitionRoundDTO round, List<SubmissionDTO> submissions, int participants, String timeLeft, String ends, List<String> limitations,
             List<SubmissionDTO> latestSubmissions, List<RankDTO> stageRanking) {
         super();
-        this.contestBenchmarkId = contestBenchmarkId;
+        this.id = contestBenchmarkId;
         this.label = label;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -72,12 +74,12 @@ public class CompetitionStageDTO implements Serializable {
         this.submissions = submissions;
     }
 
-    public int getContestBenchmarkId() {
-        return contestBenchmarkId;
+    public int getId() {
+        return id;
     }
 
-    public void setContestBenchmarkId(int contestBenchmarkId) {
-        this.contestBenchmarkId = contestBenchmarkId;
+    public void setId(int contestBenchmarkId) {
+        this.id = contestBenchmarkId;
     }
 
     public String getLabel() {
@@ -182,6 +184,22 @@ public class CompetitionStageDTO implements Serializable {
 
     public void setStageRanking(List<RankDTO> stageRanking) {
         this.stageRanking = stageRanking;
+    }
+
+    public String getSafeName() {
+        return safeName;
+    }
+
+    public void setSafeName(String safeName) {
+        this.safeName = safeName;
+    }
+
+    public String getRoundSafeName() {
+        return roundSafeName;
+    }
+
+    public void setRoundSafeName(String roundSafeName) {
+        this.roundSafeName = roundSafeName;
     }
 
 }
