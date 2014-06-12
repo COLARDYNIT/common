@@ -1,6 +1,7 @@
 package org.hwbot.api.esports;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.codehaus.jackson.map.annotate.JsonSerialize;
@@ -200,6 +201,14 @@ public class CompetitionStageDTO implements Serializable {
 
     public void setRoundSafeName(String roundSafeName) {
         this.roundSafeName = roundSafeName;
+    }
+    
+    public String getStartDateFormatted() {
+        return new SimpleDateFormat("dd.MM.yyyy").format(startDate);
+    }
+    
+    public String getStartTimeFormatted() {
+        return new SimpleDateFormat("HH:mm zz").format(endDate);
     }
 
 }
