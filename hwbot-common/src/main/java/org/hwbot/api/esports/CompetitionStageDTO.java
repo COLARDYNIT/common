@@ -203,11 +203,11 @@ public class CompetitionStageDTO implements Serializable {
     public void setRoundSafeName(String roundSafeName) {
         this.roundSafeName = roundSafeName;
     }
-    
+
     public String getStartDateFormatted() {
         return new SimpleDateFormat("dd.MM.yyyy").format(startDate);
     }
-    
+
     public String getStartTimeFormatted() {
         return new SimpleDateFormat("HH:mm zz").format(endDate);
     }
@@ -218,6 +218,14 @@ public class CompetitionStageDTO implements Serializable {
 
     public void setUnit(String unit) {
         this.unit = unit;
+    }
+
+    public boolean isActive() {
+        return !isPassed() && (this.startDate < System.currentTimeMillis());
+    }
+
+    public boolean isPassed() {
+        return (this.endDate <= System.currentTimeMillis());
     }
 
 }
