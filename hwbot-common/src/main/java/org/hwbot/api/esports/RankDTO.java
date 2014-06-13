@@ -25,6 +25,7 @@ public class RankDTO implements Comparable<RankDTO>, Serializable {
     // details
     protected List<SubmissionDTO> submissionDTOs;
     protected String scoreFormatted;
+    protected String scoreUnit;
     protected final List<String> images = new ArrayList<String>();
     protected final List<RankDTO> stages = new ArrayList<RankDTO>();
 
@@ -154,6 +155,14 @@ public class RankDTO implements Comparable<RankDTO>, Serializable {
 
     public boolean isRemoteImage() {
         return getAvatar() != null && getAvatar().startsWith("http");
+    }
+
+    public String getScoreUnit() {
+        return scoreUnit;
+    }
+
+    public void setScoreUnit(String scoreUnit) {
+        this.scoreUnit = scoreUnit;
     }
 
 }

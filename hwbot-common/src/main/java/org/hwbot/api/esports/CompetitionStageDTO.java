@@ -30,6 +30,7 @@ public class CompetitionStageDTO implements Serializable {
     private String pointsDistribution;
     private CompetitionRoundDTO round;
     private List<SubmissionDTO> submissions;
+    private String unit;
 
     // leader
 
@@ -209,6 +210,14 @@ public class CompetitionStageDTO implements Serializable {
     
     public String getStartTimeFormatted() {
         return new SimpleDateFormat("HH:mm zz").format(endDate);
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 
 }
