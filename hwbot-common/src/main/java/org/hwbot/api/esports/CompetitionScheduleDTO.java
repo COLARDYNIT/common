@@ -1,8 +1,6 @@
 package org.hwbot.api.esports;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 import org.codehaus.jackson.map.annotate.JsonSerialize;
@@ -34,25 +32,25 @@ public class CompetitionScheduleDTO implements Serializable {
         this.endDate = endDate;
     }
 
-    public String getStartDateFormatted() {
-        return new SimpleDateFormat("MMM dd").format(startDate);
-    }
-
-    public String getEndDateFormatted() {
-        return new SimpleDateFormat("MMM dd").format(endDate);
-    }
-
-    public int getStartMonth() {
-        Calendar instance = Calendar.getInstance();
-        instance.setTime(startDate);
-        return instance.get(Calendar.MONTH) + 1;
-    }
-
-    public int getEndMonth() {
-        Calendar instance = Calendar.getInstance();
-        instance.setTime(endDate);
-        return instance.get(Calendar.MONTH) + 1;
-    }
+    // public String getStartDateFormatted() {
+    // return new SimpleDateFormat("MMM dd").format(startDate);
+    // }
+    //
+    // public String getEndDateFormatted() {
+    // return new SimpleDateFormat("MMM dd").format(endDate);
+    // }
+    //
+    // public int getStartMonth() {
+    // Calendar instance = Calendar.getInstance();
+    // instance.setTime(startDate);
+    // return instance.get(Calendar.MONTH) + 1;
+    // }
+    //
+    // public int getEndMonth() {
+    // Calendar instance = Calendar.getInstance();
+    // instance.setTime(endDate);
+    // return instance.get(Calendar.MONTH) + 1;
+    // }
 
     public int getId() {
         return id;
