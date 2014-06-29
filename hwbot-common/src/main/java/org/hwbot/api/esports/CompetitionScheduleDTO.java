@@ -46,7 +46,7 @@ public class CompetitionScheduleDTO implements Serializable {
     }
 
     public int getMonths() {
-        return Integer.valueOf(new SimpleDateFormat("M").format(endDate)) - Integer.valueOf(new SimpleDateFormat("M").format(startDate));
+        return (Integer.valueOf(new SimpleDateFormat("M").format(endDate)) - Integer.valueOf(new SimpleDateFormat("M").format(startDate))) + 1;
     }
 
     public int getId() {
