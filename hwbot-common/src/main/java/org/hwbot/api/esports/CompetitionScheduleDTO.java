@@ -45,22 +45,9 @@ public class CompetitionScheduleDTO implements Serializable {
         return new SimpleDateFormat("MMM dd").format(startDate) + " - " + new SimpleDateFormat("MMM dd").format(endDate);
     }
 
-    //
-    // public String getEndDateFormatted() {
-    // return new SimpleDateFormat("MMM dd").format(endDate);
-    // }
-    //
-    // public int getStartMonth() {
-    // Calendar instance = Calendar.getInstance();
-    // instance.setTime(startDate);
-    // return instance.get(Calendar.MONTH) + 1;
-    // }
-    //
-    // public int getEndMonth() {
-    // Calendar instance = Calendar.getInstance();
-    // instance.setTime(endDate);
-    // return instance.get(Calendar.MONTH) + 1;
-    // }
+    public int getMonths() {
+        return Integer.valueOf(new SimpleDateFormat("M").format(endDate)) - Integer.valueOf(new SimpleDateFormat("M").format(startDate));
+    }
 
     public int getId() {
         return id;

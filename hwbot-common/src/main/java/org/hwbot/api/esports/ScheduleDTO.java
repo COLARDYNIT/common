@@ -2,7 +2,10 @@ package org.hwbot.api.esports;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 import org.codehaus.jackson.map.annotate.JsonSerialize;
@@ -60,8 +63,6 @@ public class ScheduleDTO implements Serializable {
         for (CompetitionScheduleRowDTO row : this.rows) {
             if (type.equals(row.getType())) {
                 rowsOfType.add(row);
-            } else {
-                System.out.println("type: " + row.getType());
             }
         }
         return rowsOfType;
@@ -70,6 +71,43 @@ public class ScheduleDTO implements Serializable {
     @Override
     public String toString() {
         return "ScheduleDTO [currentYear=" + currentYear + ", currentMonth=" + currentMonth + ", " + (rows != null ? "rows=" + rows : "") + "]";
+    }
+
+    public void fillGaps() {
+        // fils the gaps in between the competitions
+        for (CompetitionScheduleRowDTO row : this.rows) {
+            for (int i = 1; i <= 12; i++) {
+                boolean gap = true;
+                List<CompetitionScheduleDTO> list = row.getList();
+                for (CompetitionScheduleDTO dto : list) {
+                    Calendar start = Calendar.getInstance();
+                    start.setTime(dto.getStartDate());
+                    int startMonth = start.get(Calendar.MONTH) + 1;
+                    start.setTime(dto.getEndDate());
+                    int endMonth = start.get(Calendar.MONTH) + 1;
+
+                    if (i == startMonth || i == endMonth || i > startMonth && i < endMonth) {
+                        gap = false;
+                        break;
+                    }
+                }
+                if (gap) {
+                    Calendar cal = Calendar.getInstance();
+                    cal.set(this.currentYear, i - 1, 1);
+                    Date start = cal.getTime();
+                    cal.set(this.currentYear, i - 1, 28);
+                    Date end = cal.getTime();
+                    list.add(new CompetitionScheduleDTO(start, end));
+                }
+            }
+            Collections.sort(row.getList(), new Comparator<CompetitionScheduleDTO>() {
+                @Override
+                public int compare(CompetitionScheduleDTO o1, CompetitionScheduleDTO o2) {
+                    return o1.getStartDate().compareTo(o2.getStartDate());
+                }
+            });
+        }
+
     }
 
 }
