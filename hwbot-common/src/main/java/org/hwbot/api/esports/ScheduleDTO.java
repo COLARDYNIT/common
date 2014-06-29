@@ -91,6 +91,7 @@ public class ScheduleDTO implements Serializable {
                         break;
                     }
                 }
+                System.out.println(row.getType() + " month #" + i + " gap? " + gap);
                 if (gap) {
                     Calendar cal = Calendar.getInstance();
                     cal.set(this.currentYear, i - 1, 1);
