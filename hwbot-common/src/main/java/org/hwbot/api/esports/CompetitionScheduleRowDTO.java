@@ -84,6 +84,7 @@ public class CompetitionScheduleRowDTO implements Serializable {
             endMonth = 12;
         }
 
+        boolean add = true;
         for (CompetitionScheduleDTO dto : this.list) {
             // overlaps?
             startCal.setTime(dto.getStartDate());
@@ -98,23 +99,29 @@ public class CompetitionScheduleRowDTO implements Serializable {
 
             if (startMonth == startMonthDto) {
                 dto.setName(dto.getName() + ", " + scheduleDTO.getName());
+                add = false;
                 if (endMonth > endMonthDto) {
                     dto.setEndDate(endDate);
                 }
             } else if (startMonth > startMonthDto) {
                 if (endMonth <= endMonthDto) {
+                    add = false;
                     dto.setName(dto.getName() + ", " + scheduleDTO.getName());
                 } else if (startMonth <= endMonthDto) {
+                    add = false;
                     dto.setEndDate(endDate);
                     dto.setName(dto.getName() + ", " + scheduleDTO.getName());
                 }
             } else if (startMonth < startMonthDto) {
                 if ((endMonth > startMonthDto || endMonth >= endMonthDto)) {
+                    add = false;
                     dto.setName(dto.getName() + ", " + scheduleDTO.getName());
                     dto.setStartDate(startDate);
                 }
             }
         }
-
+        if (add) {
+            this.list.add(scheduleDTO);
+        }
     }
 }
