@@ -85,13 +85,14 @@ public class ScheduleDTO implements Serializable {
                     int startMonth = start.get(Calendar.MONTH) + 1;
                     start.setTime(dto.getEndDate());
                     int endMonth = start.get(Calendar.MONTH) + 1;
+                    int endYear = start.get(Calendar.YEAR);
 
-                    if (i == startMonth || i == endMonth || i > startMonth && i < endMonth) {
+                    if (i == startMonth || (i == endMonth && this.currentYear == endYear) || i > startMonth && (i < endMonth && this.currentYear == endYear)) {
                         gap = false;
                         break;
                     }
                 }
-                System.out.println(row.getType() + " month #" + i + " gap? " + gap);
+                // System.out.println(row.getType() + " month #" + i + " gap? " + gap);
                 if (gap) {
                     Calendar cal = Calendar.getInstance();
                     cal.set(this.currentYear, i - 1, 1);
