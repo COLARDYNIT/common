@@ -1,6 +1,7 @@
 package org.hwbot.api.esports;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.codehaus.jackson.map.annotate.JsonSerialize;
@@ -22,19 +23,28 @@ public class CompetitionScheduleDTO implements Serializable {
     private String safeName;
     private Date startDate;
     private Date endDate;
+    private boolean empty;
+
+    public CompetitionScheduleDTO(Date startDate, Date endDate) {
+        this.empty = true;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
 
     public CompetitionScheduleDTO(int id, String name, String safeName, Date startDate, Date endDate) {
         super();
         this.id = id;
+        this.empty = false;
         this.name = name;
         this.safeName = safeName;
         this.startDate = startDate;
         this.endDate = endDate;
     }
 
-    // public String getStartDateFormatted() {
-    // return new SimpleDateFormat("MMM dd").format(startDate);
-    // }
+    public String getPeriod() {
+        return new SimpleDateFormat("MMM dd").format(startDate) + " - " + new SimpleDateFormat("MMM dd").format(endDate);
+    }
+
     //
     // public String getEndDateFormatted() {
     // return new SimpleDateFormat("MMM dd").format(endDate);
@@ -90,6 +100,14 @@ public class CompetitionScheduleDTO implements Serializable {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public boolean isEmpty() {
+        return empty;
+    }
+
+    public void setEmpty(boolean empty) {
+        this.empty = empty;
     }
 
     @Override

@@ -2,6 +2,7 @@ package org.hwbot.api.esports;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.codehaus.jackson.map.annotate.JsonSerialize;
@@ -20,11 +21,7 @@ public class ScheduleDTO implements Serializable {
     public int currentYear;
     public int currentMonth;
 
-    public List<CompetitionScheduleDTO> sponsored = new ArrayList<CompetitionScheduleDTO>();
-    public List<CompetitionScheduleDTO> events = new ArrayList<CompetitionScheduleDTO>();
-    public List<CompetitionScheduleDTO> rookie = new ArrayList<CompetitionScheduleDTO>();
-    public List<CompetitionScheduleDTO> team = new ArrayList<CompetitionScheduleDTO>();
-    public List<CompetitionScheduleDTO> country = new ArrayList<CompetitionScheduleDTO>();
+    public List<CompetitionScheduleRowDTO> rows = new ArrayList<CompetitionScheduleRowDTO>();
 
     public ScheduleDTO(int year, int currentMonth) {
         this.currentYear = year;
@@ -47,51 +44,32 @@ public class ScheduleDTO implements Serializable {
         this.currentMonth = currentMonth;
     }
 
-    public List<CompetitionScheduleDTO> getSponsored() {
-        return sponsored;
+    public List<CompetitionScheduleRowDTO> getRows() {
+        return rows;
     }
 
-    public void setSponsored(List<CompetitionScheduleDTO> sponsored) {
-        this.sponsored = sponsored;
+    public void setRows(List<CompetitionScheduleRowDTO> rows) {
+        this.rows = rows;
     }
 
-    public List<CompetitionScheduleDTO> getEvents() {
-        return events;
-    }
-
-    public void setEvents(List<CompetitionScheduleDTO> events) {
-        this.events = events;
-    }
-
-    public List<CompetitionScheduleDTO> getRookie() {
-        return rookie;
-    }
-
-    public void setRookie(List<CompetitionScheduleDTO> rookie) {
-        this.rookie = rookie;
-    }
-
-    public List<CompetitionScheduleDTO> getTeam() {
-        return team;
-    }
-
-    public void setTeam(List<CompetitionScheduleDTO> team) {
-        this.team = team;
-    }
-
-    public List<CompetitionScheduleDTO> getCountry() {
-        return country;
-    }
-
-    public void setCountry(List<CompetitionScheduleDTO> country) {
-        this.country = country;
+    public List<CompetitionScheduleRowDTO> getRowsOfType(String type) {
+        if (this.rows == null) {
+            return Collections.emptyList();
+        }
+        List<CompetitionScheduleRowDTO> rowsOfType = new ArrayList<CompetitionScheduleRowDTO>();
+        for (CompetitionScheduleRowDTO row : this.rows) {
+            if (type.equals(row.getType())) {
+                rowsOfType.add(row);
+            } else {
+                System.out.println("type: " + row.getType());
+            }
+        }
+        return rowsOfType;
     }
 
     @Override
     public String toString() {
-        return "Schedule " + currentYear + ", " + (sponsored != null ? "sponsored=" + sponsored.size() + ", " : "")
-                + (events != null ? "events=" + events.size() + ", " : "") + (rookie != null ? "rookie=" + rookie.size() + ", " : "")
-                + (team != null ? "team=" + team.size() + ", " : "") + (country != null ? "country=" + country.size() : "") + "]";
+        return "ScheduleDTO [currentYear=" + currentYear + ", currentMonth=" + currentMonth + ", " + (rows != null ? "rows=" + rows : "") + "]";
     }
 
 }
