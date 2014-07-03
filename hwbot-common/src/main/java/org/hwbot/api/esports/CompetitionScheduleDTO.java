@@ -6,6 +6,7 @@ import java.util.Date;
 
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
+import org.hwbot.util.StringUtil;
 
 /**
  * Competition info for esports.
@@ -36,6 +37,9 @@ public class CompetitionScheduleDTO implements Serializable {
         super();
         this.id = id;
         this.shortName = shortName;
+        if (this.shortName == null) {
+            this.shortName = StringUtil.abbreviate(this.name, 20);
+        }
         this.empty = false;
         this.name = name;
         this.safeName = safeName;
