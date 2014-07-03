@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 import org.hwbot.util.StringUtil;
@@ -48,11 +49,29 @@ public class CompetitionScheduleDTO implements Serializable {
     }
 
     public String getPeriod() {
-        return new SimpleDateFormat("MMM dd").format(startDate) + " - " + new SimpleDateFormat("MMM dd").format(endDate);
+        if (getStartMonth() == getEndMonth()) {
+            return new SimpleDateFormat("d").format(startDate) + " - " + new SimpleDateFormat("d MMM").format(endDate);
+        } else {
+            return new SimpleDateFormat("MMM dd").format(startDate) + " - " + new SimpleDateFormat("MMM dd").format(endDate);
+        }
     }
 
     public int getMonths() {
-        return (Integer.valueOf(new SimpleDateFormat("M").format(endDate)) - Integer.valueOf(new SimpleDateFormat("M").format(startDate))) + 1;
+        Integer startMonth = getStartMonth();
+        Integer endMonth = getEndMonth();
+        return (startMonth - endMonth) + 1;
+    }
+
+    @JsonIgnore
+    public Integer getEndMonth() {
+        Integer endMonth = Integer.valueOf(new SimpleDateFormat("M").format(startDate)) + 1;
+        return endMonth;
+    }
+
+    @JsonIgnore
+    public Integer getStartMonth() {
+        Integer startMonth = Integer.valueOf(new SimpleDateFormat("M").format(endDate)) + 1;
+        return startMonth;
     }
 
     public int getId() {
