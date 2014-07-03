@@ -37,14 +37,14 @@ public class CompetitionScheduleDTO implements Serializable {
         super();
         this.id = id;
         this.shortName = shortName;
-        if (this.shortName == null || this.shortName.length() == 0) {
-            this.shortName = StringUtil.abbreviate(this.name, 20);
-        }
-        this.empty = false;
         this.name = name;
+        this.empty = false;
         this.safeName = safeName;
         this.startDate = startDate;
         this.endDate = endDate;
+        if (this.shortName == null || this.shortName.length() == 0) {
+            this.shortName = StringUtil.abbreviate(this.name, 20);
+        }
     }
 
     public String getPeriod() {
