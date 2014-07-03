@@ -37,7 +37,7 @@ public class CompetitionScheduleDTO implements Serializable {
         super();
         this.id = id;
         this.shortName = shortName;
-        if (this.shortName == null) {
+        if (this.shortName == null || this.shortName.length() == 0) {
             this.shortName = StringUtil.abbreviate(this.name, 20);
         }
         this.empty = false;
