@@ -16,11 +16,12 @@ import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class CompetitionScheduleDTO implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2L;
 
     private int id;
     private String name;
     private String safeName;
+    private String shortName;
     private Date startDate;
     private Date endDate;
     private boolean empty;
@@ -31,9 +32,10 @@ public class CompetitionScheduleDTO implements Serializable {
         this.endDate = endDate;
     }
 
-    public CompetitionScheduleDTO(int id, String name, String safeName, Date startDate, Date endDate) {
+    public CompetitionScheduleDTO(int id, String name, String safeName, String shortName, Date startDate, Date endDate) {
         super();
         this.id = id;
+        this.shortName = shortName;
         this.empty = false;
         this.name = name;
         this.safeName = safeName;
@@ -97,11 +99,19 @@ public class CompetitionScheduleDTO implements Serializable {
         this.empty = empty;
     }
 
+    public String getShortName() {
+        return shortName;
+    }
+
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
+    }
+
     @Override
     public String toString() {
         return "CompetitionScheduleDTO [id=" + id + ", " + (name != null ? "name=" + name + ", " : "")
-                + (safeName != null ? "safeName=" + safeName + ", " : "") + (startDate != null ? "startDate=" + startDate + ", " : "")
-                + (endDate != null ? "endDate=" + endDate : "") + "]";
+                + (safeName != null ? "safeName=" + safeName + ", " : "") + (shortName != null ? "shortName=" + shortName + ", " : "")
+                + (startDate != null ? "startDate=" + startDate + ", " : "") + (endDate != null ? "endDate=" + endDate + ", " : "") + "empty=" + empty + "]";
     }
 
 }
