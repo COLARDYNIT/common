@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
+import org.hwbot.util.StringUtil;
 
 /**
  * Roadmap for pro oc, challenger, etc on esports site.
@@ -70,7 +71,18 @@ public class ScheduleDTO implements Serializable {
 
     @Override
     public String toString() {
-        return "ScheduleDTO [currentYear=" + currentYear + ", currentMonth=" + currentMonth + ", " + (rows != null ? "rows=" + rows : "") + "]";
+        StringBuilder builder = new StringBuilder("Schedule " + currentYear);
+        builder.append("\n");
+        for (CompetitionScheduleRowDTO row : this.rows) {
+            builder.append(" - " + row.getType() + " - " + row.getName() + "\t");
+            List<CompetitionScheduleDTO> list = row.getList();
+            for (CompetitionScheduleDTO dto : list) {
+                builder.append(" " + (!dto.isEmpty() ? dto.getName() : ""));
+            }
+            builder.append("\n");
+        }
+
+        return builder.toString();
     }
 
     public void fillGaps() {
@@ -108,6 +120,44 @@ public class ScheduleDTO implements Serializable {
                     return o1.getStartDate().compareTo(o2.getStartDate());
                 }
             });
+        }
+
+    }
+
+    public void add(String fullName, String tag, CompetitionScheduleDTO dto) {
+        boolean added = false;
+        // CompetitionScheduleRowDTO r = null;
+        for (CompetitionScheduleRowDTO row : this.rows) {
+            if (row.getType().equals(tag)) {
+                // r = row;
+                boolean overlaps = false;
+                for (CompetitionScheduleDTO schedule : row.getList()) {
+                    // check if month overlaps
+                    if (schedule.getStartMonth() == dto.getStartMonth() || schedule.getStartMonth() == dto.getEndMonth()) {
+                        overlaps = true;
+                        break;
+                    }
+                    if (schedule.getEndMonth() == dto.getEndMonth() || schedule.getEndMonth() == dto.getStartMonth()) {
+                        overlaps = true;
+                        break;
+                    }
+                }
+                if (!overlaps) {
+                    System.out.println("no overlap, adding " + dto);
+                    // row = new CompetitionScheduleRowDTO(fullName, tag, StringUtil.makeUrlSafe(fullName));
+                    // this.rows.add(row);
+                    row.add(dto);
+                    added = true;
+                    break;
+                }
+            }
+        }
+
+        if (!added) {
+            System.out.println("overlap or new: " + dto);
+            CompetitionScheduleRowDTO row = new CompetitionScheduleRowDTO(fullName, tag, StringUtil.makeUrlSafe(fullName));
+            this.rows.add(row);
+            row.add(dto);
         }
 
     }
