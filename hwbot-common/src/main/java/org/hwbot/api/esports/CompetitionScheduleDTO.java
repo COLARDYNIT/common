@@ -27,6 +27,7 @@ public class CompetitionScheduleDTO implements Serializable {
     private Date startDate;
     private Date endDate;
     private boolean empty;
+    private boolean event = false;
 
     public CompetitionScheduleDTO(Date startDate, Date endDate) {
         this.empty = true;
@@ -39,6 +40,21 @@ public class CompetitionScheduleDTO implements Serializable {
         this.id = id;
         this.shortName = shortName;
         this.name = name;
+        this.empty = false;
+        this.safeName = safeName;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        if (this.shortName == null || this.shortName.length() == 0) {
+            this.shortName = StringUtil.abbreviate(this.name, 20);
+        }
+    }
+
+    public CompetitionScheduleDTO(int id, String name, String safeName, String shortName, Date startDate, Date endDate, boolean event) {
+        super();
+        this.id = id;
+        this.shortName = shortName;
+        this.name = name;
+        this.event = event;
         this.empty = false;
         this.safeName = safeName;
         this.startDate = startDate;
@@ -128,6 +144,14 @@ public class CompetitionScheduleDTO implements Serializable {
 
     public void setShortName(String shortName) {
         this.shortName = shortName;
+    }
+
+    public boolean isEvent() {
+        return event;
+    }
+
+    public void setEvent(boolean event) {
+        this.event = event;
     }
 
     @Override
