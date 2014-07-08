@@ -121,10 +121,10 @@ public class ScheduleDTO implements Serializable {
                 }
             });
         }
-
     }
 
     public void add(String fullName, String tag, CompetitionScheduleDTO dto) {
+        tag = StringUtil.makeUrlSafe(tag);
         boolean added = false;
         boolean firstRow = true;
         for (CompetitionScheduleRowDTO row : this.rows) {
