@@ -10,7 +10,6 @@ import java.util.List;
 
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
-import org.hwbot.util.StringUtil;
 
 /**
  * Roadmap for pro oc, challenger, etc on esports site.
@@ -123,12 +122,11 @@ public class ScheduleDTO implements Serializable {
         }
     }
 
-    public void add(String fullName, String tag, CompetitionScheduleDTO dto) {
-        tag = StringUtil.makeUrlSafe(tag);
+    public void add(String fullName, String tag, String type, CompetitionScheduleDTO dto) {
         boolean added = false;
         boolean firstRow = true;
         for (CompetitionScheduleRowDTO row : this.rows) {
-            if (row.getType().equals(tag)) {
+            if (row.getType().equals(type)) {
                 firstRow = false;
                 boolean overlaps = false;
                 for (CompetitionScheduleDTO schedule : row.getList()) {
@@ -151,7 +149,7 @@ public class ScheduleDTO implements Serializable {
         }
 
         if (!added) {
-            CompetitionScheduleRowDTO row = new CompetitionScheduleRowDTO((firstRow ? fullName : null), tag, StringUtil.makeUrlSafe(fullName));
+            CompetitionScheduleRowDTO row = new CompetitionScheduleRowDTO((firstRow ? fullName : null), tag, type);
             this.rows.add(row);
             row.add(dto);
         }

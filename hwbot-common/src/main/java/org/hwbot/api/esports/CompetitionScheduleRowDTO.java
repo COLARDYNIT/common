@@ -21,14 +21,14 @@ public class CompetitionScheduleRowDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private String name;
-    private String safeName;
+    private String tag;
     private String type;
     private List<CompetitionScheduleDTO> list = new ArrayList<CompetitionScheduleDTO>();
 
-    public CompetitionScheduleRowDTO(String name, String type, String safeName) {
-        this.type = type;
+    public CompetitionScheduleRowDTO(String name, String tag, String type) {
         this.name = name;
-        this.safeName = safeName;
+        this.type = type;
+        this.tag = tag;
     }
 
     public String getType() {
@@ -47,12 +47,12 @@ public class CompetitionScheduleRowDTO implements Serializable {
         this.name = name;
     }
 
-    public String getSafeName() {
-        return safeName;
+    public String getTag() {
+        return tag;
     }
 
-    public void setSafeName(String safeName) {
-        this.safeName = safeName;
+    public void setTag(String tag) {
+        this.tag = tag;
     }
 
     public List<CompetitionScheduleDTO> getList() {
@@ -65,7 +65,7 @@ public class CompetitionScheduleRowDTO implements Serializable {
 
     @Override
     public String toString() {
-        return "CompetitionScheduleRowDTO [" + (name != null ? "name=" + name + ", " : "") + (safeName != null ? "safeName=" + safeName + ", " : "")
+        return "CompetitionScheduleRowDTO [" + (name != null ? "name=" + name + ", " : "") + (tag != null ? "tag=" + tag + ", " : "")
                 + (type != null ? "type=" + type + ", " : "") + (list != null ? "list=" + list : "") + "]";
     }
 
