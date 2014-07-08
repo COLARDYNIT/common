@@ -126,10 +126,10 @@ public class ScheduleDTO implements Serializable {
 
     public void add(String fullName, String tag, CompetitionScheduleDTO dto) {
         boolean added = false;
-        // CompetitionScheduleRowDTO r = null;
+        boolean firstRow = true;
         for (CompetitionScheduleRowDTO row : this.rows) {
             if (row.getType().equals(tag)) {
-                // r = row;
+                firstRow = false;
                 boolean overlaps = false;
                 for (CompetitionScheduleDTO schedule : row.getList()) {
                     // check if month overlaps
@@ -143,9 +143,6 @@ public class ScheduleDTO implements Serializable {
                     }
                 }
                 if (!overlaps) {
-                    System.out.println("no overlap, adding " + dto);
-                    // row = new CompetitionScheduleRowDTO(fullName, tag, StringUtil.makeUrlSafe(fullName));
-                    // this.rows.add(row);
                     row.add(dto);
                     added = true;
                     break;
@@ -154,8 +151,7 @@ public class ScheduleDTO implements Serializable {
         }
 
         if (!added) {
-            System.out.println("overlap or new: " + dto);
-            CompetitionScheduleRowDTO row = new CompetitionScheduleRowDTO(fullName, tag, StringUtil.makeUrlSafe(fullName));
+            CompetitionScheduleRowDTO row = new CompetitionScheduleRowDTO((firstRow ? fullName : null), tag, StringUtil.makeUrlSafe(fullName));
             this.rows.add(row);
             row.add(dto);
         }
