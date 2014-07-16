@@ -30,6 +30,7 @@ public class CompetitionRoundDTO implements Serializable {
     private Date endDate;
 
     private String name;
+    private String subtitle;
     private String safeName;
 
     private String competitorType;
@@ -49,22 +50,23 @@ public class CompetitionRoundDTO implements Serializable {
     private boolean notHosted = false;
     private boolean event = false;
 
+    private int participants;
     private List<CompetitionStageDTO> stages;
-    private List<UserDTO> participants;
     private List<RankDTO> roundRanking;
     private List<SubmissionDTO> latestSubmissions;
     private UserDTO leadingMember;
     private TeamDTO leadingTeam;
     private CountryDTO leadingCountry;
 
-    public CompetitionRoundDTO(int contestId, Integer parentContestId, Date startdate, Date enddate, String name, String safeName, String competitorType,
-            boolean openParticipation, boolean closed, String pictureLarge, String partnerPicture, Integer level) {
+    public CompetitionRoundDTO(int contestId, Integer parentContestId, Date startdate, Date enddate, String name, String subtitle, String safeName,
+            String competitorType, boolean openParticipation, boolean closed, String pictureLarge, String partnerPicture, Integer level) {
         super();
         this.id = contestId;
         this.parentId = parentContestId;
         this.startDate = startdate;
         this.endDate = enddate;
         this.name = name;
+        this.subtitle = subtitle;
         this.safeName = safeName;
         this.competitorType = competitorType;
         this.openParticipation = openParticipation;
@@ -142,7 +144,7 @@ public class CompetitionRoundDTO implements Serializable {
         return stages;
     }
 
-    public List<UserDTO> getParticipants() {
+    public int getParticipants() {
         return participants;
     }
 
@@ -218,7 +220,7 @@ public class CompetitionRoundDTO implements Serializable {
         this.stages = stages;
     }
 
-    public void setParticipants(List<UserDTO> participants) {
+    public void setParticipants(int participants) {
         this.participants = participants;
     }
 
@@ -304,6 +306,14 @@ public class CompetitionRoundDTO implements Serializable {
 
     public void setLeadingCountry(CountryDTO leadingCountry) {
         this.leadingCountry = leadingCountry;
+    }
+
+    public String getSubtitle() {
+        return subtitle;
+    }
+
+    public void setSubtitle(String subtitle) {
+        this.subtitle = subtitle;
     }
 
 }
