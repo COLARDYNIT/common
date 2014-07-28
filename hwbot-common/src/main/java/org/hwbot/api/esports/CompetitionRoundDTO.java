@@ -1,6 +1,5 @@
 package org.hwbot.api.esports;
 
-import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -8,7 +7,6 @@ import java.util.List;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 import org.hwbot.api.generic.dto.CountryDTO;
-import org.hwbot.api.generic.dto.SubmissionDTO;
 import org.hwbot.api.generic.dto.TeamDTO;
 import org.hwbot.api.generic.dto.UserDTO;
 
@@ -19,7 +17,7 @@ import org.hwbot.api.generic.dto.UserDTO;
  * 
  */
 @JsonSerialize(include = Inclusion.NON_NULL)
-public class CompetitionRoundDTO implements Serializable {
+public class CompetitionRoundDTO extends DiscussableDTO {
 
     private static final long serialVersionUID = 2L;
 
@@ -53,7 +51,6 @@ public class CompetitionRoundDTO implements Serializable {
     private int participants;
     private List<CompetitionStageDTO> stages;
     private List<RankDTO> roundRanking;
-    private List<SubmissionDTO> latestSubmissions;
     private UserDTO leadingMember;
     private TeamDTO leadingTeam;
     private CountryDTO leadingCountry;
@@ -258,14 +255,6 @@ public class CompetitionRoundDTO implements Serializable {
 
     public int getId() {
         return id;
-    }
-
-    public List<SubmissionDTO> getLatestSubmissions() {
-        return latestSubmissions;
-    }
-
-    public void setLatestSubmissions(List<SubmissionDTO> latestSubmissions) {
-        this.latestSubmissions = latestSubmissions;
     }
 
     public String getExcerptLead() {

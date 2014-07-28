@@ -1,6 +1,5 @@
 package org.hwbot.api.esports;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -16,7 +15,7 @@ import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
  * 
  */
 @JsonSerialize(include = Inclusion.NON_NULL)
-public class CompetitionScheduleRowDTO implements Serializable {
+public class CompetitionScheduleRowDTO extends DiscussableDTO {
 
     private static final long serialVersionUID = 1L;
 
@@ -79,7 +78,7 @@ public class CompetitionScheduleRowDTO implements Serializable {
 
         int startMonth = startCal.get(Calendar.MONTH) + 1;
         int endMonth = endCal.get(Calendar.MONTH) + 1;
-        int endYear = endCal.get(Calendar.YEAR);
+        // int endYear = endCal.get(Calendar.YEAR);
         if (endMonth < startMonth) {
             endMonth = 12;
         }
@@ -92,7 +91,7 @@ public class CompetitionScheduleRowDTO implements Serializable {
 
             int startMonthDto = startCal.get(Calendar.MONTH) + 1;
             int endMonthDto = endCal.get(Calendar.MONTH) + 1;
-            int endYearDto = endCal.get(Calendar.YEAR);
+            // int endYearDto = endCal.get(Calendar.YEAR);
             if (endMonthDto < startMonthDto) {
                 endMonthDto = 12;
             }

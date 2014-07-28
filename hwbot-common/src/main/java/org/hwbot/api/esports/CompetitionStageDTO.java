@@ -1,6 +1,5 @@
 package org.hwbot.api.esports;
 
-import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
@@ -15,7 +14,7 @@ import org.hwbot.api.generic.dto.SubmissionDTO;
  * 
  */
 @JsonSerialize(include = Inclusion.NON_NULL)
-public class CompetitionStageDTO implements Serializable {
+public class CompetitionStageDTO extends DiscussableDTO {
 
     private static final long serialVersionUID = 1L;
 
@@ -29,7 +28,6 @@ public class CompetitionStageDTO implements Serializable {
     private int contestId;
     private String pointsDistribution;
     private CompetitionRoundDTO round;
-    private List<SubmissionDTO> submissions;
     private String unit;
 
     // leader
@@ -48,7 +46,7 @@ public class CompetitionStageDTO implements Serializable {
     }
 
     public CompetitionStageDTO(int contestBenchmarkId, String label, long startDate, long endDate, int applicationId, int contestId, String pointsDistribution,
-            CompetitionRoundDTO round, List<SubmissionDTO> submissions, int participants, String timeLeft, String ends, List<String> limitations,
+            CompetitionRoundDTO round, int participants, String timeLeft, String ends, List<String> limitations,
             List<SubmissionDTO> latestSubmissions, List<RankDTO> stageRanking) {
         super();
         this.id = contestBenchmarkId;
@@ -59,21 +57,12 @@ public class CompetitionStageDTO implements Serializable {
         this.contestId = contestId;
         this.pointsDistribution = pointsDistribution;
         this.round = round;
-        this.submissions = submissions;
         this.participants = participants;
         this.timeLeft = timeLeft;
         this.ends = ends;
         this.limitations = limitations;
         this.latestSubmissions = latestSubmissions;
         this.stageRanking = stageRanking;
-    }
-
-    public List<SubmissionDTO> getSubmissions() {
-        return submissions;
-    }
-
-    public void setSubmissions(List<SubmissionDTO> submissions) {
-        this.submissions = submissions;
     }
 
     public int getId() {
