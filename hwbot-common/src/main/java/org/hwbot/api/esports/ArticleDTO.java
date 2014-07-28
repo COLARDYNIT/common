@@ -1,6 +1,5 @@
 package org.hwbot.api.esports;
 
-import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -17,7 +16,7 @@ import org.hwbot.util.StringUtil;
  * 
  */
 @JsonSerialize(include = Inclusion.NON_NULL)
-public class ArticleDTO implements Serializable {
+public class ArticleDTO extends DiscussableDTO {
 
     private static final long serialVersionUID = 1L;
 
@@ -44,7 +43,6 @@ public class ArticleDTO implements Serializable {
 
     private int amountOfComments;
     private List<String> tags;
-    private List<CommentDTO> comments;
 
     public String getTitle() {
         return title;
@@ -156,14 +154,6 @@ public class ArticleDTO implements Serializable {
 
     public void setTags(List<String> tags) {
         this.tags = tags;
-    }
-
-    public List<CommentDTO> getComments() {
-        return comments;
-    }
-
-    public void setComments(List<CommentDTO> comments) {
-        this.comments = comments;
     }
 
     public String getDateTime() {

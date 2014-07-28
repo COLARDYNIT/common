@@ -21,8 +21,10 @@ public class CommentDTO implements Serializable {
     private final Long postId;
     private final long time;
     private final String timeAgo;
-    private int score;
+    private int upvotes;
+    private int downvotes;
     private String avatar;
+    private String authorSafeName;
 
     public CommentDTO(String author, String content, Long postId, long time, String timeAgo) {
         this.author = author;
@@ -40,12 +42,20 @@ public class CommentDTO implements Serializable {
         this.avatar = avatar;
     }
 
-    public int getScore() {
-        return score;
+    public int getUpvotes() {
+        return upvotes;
     }
 
-    public void setScore(int score) {
-        this.score = score;
+    public void setUpvotes(int upvotes) {
+        this.upvotes = upvotes;
+    }
+
+    public int getDownvotes() {
+        return downvotes;
+    }
+
+    public void setDownvotes(int downvotes) {
+        this.downvotes = downvotes;
     }
 
     public String getAuthor() {
@@ -66,6 +76,14 @@ public class CommentDTO implements Serializable {
 
     public String getTimeAgo() {
         return timeAgo;
+    }
+
+    public String getAuthorSafeName() {
+        return authorSafeName;
+    }
+
+    public void setAuthorSafeName(String authorSafeName) {
+        this.authorSafeName = authorSafeName;
     }
 
     @Override

@@ -1,11 +1,9 @@
 package org.hwbot.api.esports;
 
-import java.io.Serializable;
 import java.util.List;
 
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
-import org.hwbot.api.generic.dto.UserDTO;
 
 /**
  * Roadmap for pro oc, challenger, etc on esports site.
@@ -14,7 +12,7 @@ import org.hwbot.api.generic.dto.UserDTO;
  * 
  */
 @JsonSerialize(include = Inclusion.NON_NULL)
-public class RoadMapDTO implements Serializable {
+public class RoadMapDTO extends DiscussableDTO {
 
     private static final long serialVersionUID = 1L;
     private String name;
