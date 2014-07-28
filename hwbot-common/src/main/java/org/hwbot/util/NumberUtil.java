@@ -7,6 +7,9 @@ import java.util.Locale;
 
 public class NumberUtil {
 
+    public static final NumberFormat pointsFormat = new DecimalFormat("#.##", new DecimalFormatSymbols(Locale.US));
+    public static final NumberFormat pctFormat = new DecimalFormat("+#.00%;-#.00%", new DecimalFormatSymbols(Locale.US));
+
     public static String getOrdinalSuffix(int number) {
         String suffix;
         if (number == 0) {
@@ -44,14 +47,26 @@ public class NumberUtil {
         return text;
     }
 
-    public static NumberFormat pointsFormat = new DecimalFormat("#.##", new DecimalFormatSymbols(Locale.US));
-
     public static String format(float points) {
         return pointsFormat.format(points);
     }
 
     public static String format(Object points) {
         return pointsFormat.format(points);
+    }
+
+    public static String formatPct(Float pct) {
+        if (pct != null) {
+            if (pct > 0) {
+                return "<span class='green'>" + pctFormat.format(pct) + "</span>";
+            } else if (pct < 0) {
+                return "<span class='red'>" + pctFormat.format(pct) + "</span>";
+            } else {
+                return "stock";
+            }
+        } else {
+            return "stock";
+        }
     }
 
     public static boolean isEqual(Number points1, Number points2, float allowedDifference) {
