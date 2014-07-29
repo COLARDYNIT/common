@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
-import org.hwbot.api.generic.dto.CommentDTO;
 import org.hwbot.util.StringUtil;
 
 /**
