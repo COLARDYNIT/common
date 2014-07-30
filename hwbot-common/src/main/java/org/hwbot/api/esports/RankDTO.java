@@ -15,6 +15,7 @@ public class RankDTO implements Comparable<RankDTO>, Serializable {
 
     private static final long serialVersionUID = 1L;
     public String name;
+    public String team;
     public int position;
     public int points;
     public String countryCode;
@@ -41,6 +42,14 @@ public class RankDTO implements Comparable<RankDTO>, Serializable {
         this.countryCode = countryCode;
         this.url = url;
         this.avatar = avatar;
+    }
+
+    public String getTeam() {
+        return team;
+    }
+
+    public void setTeam(String team) {
+        this.team = team;
     }
 
     public int getId() {

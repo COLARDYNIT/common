@@ -30,6 +30,7 @@ public class CompetitionRoundDTO extends DiscussableDTO {
     private String name;
     private String subtitle;
     private String safeName;
+    private String type;
 
     private String competitorType;
     private boolean openParticipation = false;
@@ -71,6 +72,14 @@ public class CompetitionRoundDTO extends DiscussableDTO {
         this.pictureLarge = pictureLarge;
         this.partnerPicture = partnerPicture;
         this.level = level;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Integer getParentId() {

@@ -29,6 +29,7 @@ public class CompetitionStageDTO extends DiscussableDTO {
     private String pointsDistribution;
     private CompetitionRoundDTO round;
     private String unit;
+    private String type;
 
     // leader
 
@@ -46,8 +47,8 @@ public class CompetitionStageDTO extends DiscussableDTO {
     }
 
     public CompetitionStageDTO(int contestBenchmarkId, String label, long startDate, long endDate, int applicationId, int contestId, String pointsDistribution,
-            CompetitionRoundDTO round, int participants, String timeLeft, String ends, List<String> limitations,
-            List<SubmissionDTO> latestSubmissions, List<RankDTO> stageRanking) {
+            CompetitionRoundDTO round, int participants, String timeLeft, String ends, List<String> limitations, List<SubmissionDTO> latestSubmissions,
+            List<RankDTO> stageRanking) {
         super();
         this.id = contestBenchmarkId;
         this.label = label;
@@ -63,6 +64,14 @@ public class CompetitionStageDTO extends DiscussableDTO {
         this.limitations = limitations;
         this.latestSubmissions = latestSubmissions;
         this.stageRanking = stageRanking;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public int getId() {
