@@ -7,14 +7,15 @@ import java.util.List;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 import org.hwbot.api.generic.dto.CountryDTO;
+import org.hwbot.api.generic.dto.SubmissionDTO;
 import org.hwbot.api.generic.dto.TeamDTO;
 import org.hwbot.api.generic.dto.UserDTO;
 
 /**
  * Competition info for esports.
- * 
+ *
  * @author frederik
- * 
+ *
  */
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class CompetitionRoundDTO extends DiscussableDTO {
@@ -52,6 +53,8 @@ public class CompetitionRoundDTO extends DiscussableDTO {
     private int participants;
     private List<CompetitionStageDTO> stages;
     private List<RankDTO> roundRanking;
+    private List<SubmissionDTO> latestSubmissions;  // ok to add, or get submissions with a seperate request?
+
     private UserDTO leadingMember;
     private TeamDTO leadingTeam;
     private CountryDTO leadingCountry;
@@ -236,6 +239,14 @@ public class CompetitionRoundDTO extends DiscussableDTO {
 
     public void setRoundRanking(List<RankDTO> roundRanking) {
         this.roundRanking = roundRanking;
+    }
+
+    public List<SubmissionDTO> getLatestSubmissions() {
+        return latestSubmissions;
+    }
+
+    public void setLatestSubmissions(List<SubmissionDTO> latestSubmissions) {
+        this.latestSubmissions = latestSubmissions;
     }
 
     public String getStartDayOfMonth() {
