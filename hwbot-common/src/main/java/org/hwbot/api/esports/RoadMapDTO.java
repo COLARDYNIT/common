@@ -14,11 +14,12 @@ import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class RoadMapDTO extends DiscussableDTO {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2L;
     private String name;
     private String type;
     private List<CompetitionRoundDTO> rounds;
     private List<RankDTO> ranking;
+    private String tag;
 
     public RoadMapDTO() {
         super();
@@ -120,6 +121,14 @@ public class RoadMapDTO extends DiscussableDTO {
     @Override
     public String toString() {
         return "RoadMapDTO [" + (name != null ? "name=" + name + ", " : "") + (rounds != null ? "rounds=" + rounds : "") + "]";
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    public String getTag() {
+        return tag;
     }
 
 }
