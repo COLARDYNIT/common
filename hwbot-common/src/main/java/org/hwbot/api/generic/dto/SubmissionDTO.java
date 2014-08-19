@@ -5,9 +5,10 @@ import java.util.List;
 
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
+import org.hwbot.api.esports.DiscussableDTO;
 
 @JsonSerialize(include = Inclusion.NON_NULL)
-public class SubmissionDTO implements Serializable {
+public class SubmissionDTO extends DiscussableDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -31,7 +32,7 @@ public class SubmissionDTO implements Serializable {
     private Integer cpuFreq;
     private final int id;
     private int likes;
-    private int comments;
+    private int replies;
     private Integer stageId;
     private List<String> images;
 
@@ -43,11 +44,11 @@ public class SubmissionDTO implements Serializable {
                 + (app != null ? "app=" + app + ", " : "") + (image != null ? "image=" + image + ", " : "")
                 + (description != null ? "description=" + description + ", " : "") + (kernel != null ? "kernel=" + kernel + ", " : "")
                 + (osBuild != null ? "osBuild=" + osBuild + ", " : "") + (cpuFreq != null ? "cpuFreq=" + cpuFreq + ", " : "") + "id=" + id + ", likes=" + likes
-                + ", comments=" + comments + "]";
+                + ", replies=" + replies + "]";
     }
 
     public SubmissionDTO(int id, String user, String team, String hardware, String points, String country, String app, String image, String description,
-            String kernel, String osBuild, Integer cpuFreq, int likes, int comments) {
+            String kernel, String osBuild, Integer cpuFreq, int likes, int replies) {
         super();
         this.id = id;
         this.user = user;
@@ -62,7 +63,7 @@ public class SubmissionDTO implements Serializable {
         this.osBuild = osBuild;
         this.cpuFreq = cpuFreq;
         this.likes = likes;
-        this.comments = comments;
+        this.replies = replies;
     }
 
     public String getKernel() {
@@ -177,12 +178,12 @@ public class SubmissionDTO implements Serializable {
         this.likes = likes;
     }
 
-    public int getComments() {
-        return comments;
+    public int getReplies() {
+        return replies;
     }
 
-    public void setComments(int comments) {
-        this.comments = comments;
+    public void setReplies(int replies) {
+        this.replies = replies;
     }
 
     public String getDevice() {
