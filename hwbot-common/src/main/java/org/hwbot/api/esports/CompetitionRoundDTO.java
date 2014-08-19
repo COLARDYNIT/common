@@ -13,9 +13,9 @@ import org.hwbot.api.generic.dto.UserDTO;
 
 /**
  * Competition info for esports.
- *
+ * 
  * @author frederik
- *
+ * 
  */
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class CompetitionRoundDTO extends DiscussableDTO {
@@ -43,6 +43,7 @@ public class CompetitionRoundDTO extends DiscussableDTO {
     private String description;
     private String excerptLead;
     private String excerpt;
+    private String prizes;
     private String rules;
 
     private Integer level;
@@ -53,7 +54,7 @@ public class CompetitionRoundDTO extends DiscussableDTO {
     private int participants;
     private List<CompetitionStageDTO> stages;
     private List<RankDTO> roundRanking;
-    private List<SubmissionDTO> latestSubmissions;  // ok to add, or get submissions with a seperate request?
+    private List<SubmissionDTO> latestSubmissions; // ok to add, or get submissions with a seperate request?
 
     private UserDTO leadingMember;
     private TeamDTO leadingTeam;
@@ -323,6 +324,14 @@ public class CompetitionRoundDTO extends DiscussableDTO {
 
     public void setSubtitle(String subtitle) {
         this.subtitle = subtitle;
+    }
+
+    public String getPrizes() {
+        return prizes;
+    }
+
+    public void setPrizes(String prizes) {
+        this.prizes = prizes;
     }
 
 }
