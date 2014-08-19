@@ -1,6 +1,7 @@
 package org.hwbot.api.generic.dto;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
@@ -32,6 +33,7 @@ public class SubmissionDTO implements Serializable {
     private int likes;
     private int comments;
     private Integer stageId;
+    private List<String> images;
 
     @Override
     public String toString() {
@@ -237,6 +239,14 @@ public class SubmissionDTO implements Serializable {
 
     public void setStageId(Integer stageId) {
         this.stageId = stageId;
+    }
+
+    public List<String> getImages() {
+        return images;
+    }
+
+    public void setImages(List<String> images) {
+        this.images = images;
     }
 
 }
