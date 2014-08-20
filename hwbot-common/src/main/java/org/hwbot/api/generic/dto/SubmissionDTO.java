@@ -17,6 +17,7 @@ public class SubmissionDTO extends DiscussableDTO implements Serializable {
     private String user;
     private String team;
     private String hardware;
+    private String cooling;
     // either one is filled in, not both
     private String score;
     private Integer hour, min, sec, msec;
@@ -39,7 +40,8 @@ public class SubmissionDTO extends DiscussableDTO implements Serializable {
     @Override
     public String toString() {
         return "SubmissionDTO [" + (user != null ? "user=" + user + ", " : "") + (team != null ? "team=" + team + ", " : "")
-                + (hardware != null ? "hardware=" + hardware + ", " : "") + (score != null ? "score=" + score + ", " : "")
+                + (hardware != null ? "hardware=" + hardware + ", " : "")
+                + (cooling != null ? "cooling=" + cooling + ", " : "") + (score != null ? "score=" + score + ", " : "")
                 + (points != null ? "points=" + points + ", " : "") + (country != null ? "country=" + country + ", " : "")
                 + (app != null ? "app=" + app + ", " : "") + (image != null ? "image=" + image + ", " : "")
                 + (description != null ? "description=" + description + ", " : "") + (kernel != null ? "kernel=" + kernel + ", " : "")
@@ -47,13 +49,14 @@ public class SubmissionDTO extends DiscussableDTO implements Serializable {
                 + ", replies=" + replies + "]";
     }
 
-    public SubmissionDTO(int id, String user, String team, String hardware, String points, String country, String app, String image, String description,
+    public SubmissionDTO(int id, String user, String team, String hardware, String cooling, String points, String country, String app, String image, String description,
             String kernel, String osBuild, Integer cpuFreq, int likes, int replies) {
         super();
         this.id = id;
         this.user = user;
         this.team = team;
         this.hardware = hardware;
+        this.cooling = cooling;
         this.points = points;
         this.country = country;
         this.app = app;
@@ -140,6 +143,14 @@ public class SubmissionDTO extends DiscussableDTO implements Serializable {
 
     public String getHardware() {
         return hardware;
+    }
+
+    public String getCooling() {
+        return cooling;
+    }
+
+    public void setCooling(String cooling) {
+        this.cooling = cooling;
     }
 
     public String getPoints() {
