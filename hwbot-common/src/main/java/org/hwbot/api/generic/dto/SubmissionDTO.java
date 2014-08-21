@@ -37,6 +37,13 @@ public class SubmissionDTO extends DiscussableDTO implements Serializable {
     private Integer stageId;
     private List<String> images;
 
+    private String processor;
+    private String videocard;
+    private String motherboard;
+    private String memory;
+    private String disk;
+    private String powerSupply;
+
     @Override
     public String toString() {
         return "SubmissionDTO [" + (user != null ? "user=" + user + ", " : "") + (team != null ? "team=" + team + ", " : "")
@@ -260,5 +267,54 @@ public class SubmissionDTO extends DiscussableDTO implements Serializable {
     public void setImages(List<String> images) {
         this.images = images;
     }
+
+    public String getProcessor() {
+        return processor;
+    }
+
+    public void setProcessor(String processor) {
+        this.processor = processor;
+    }
+
+    public String getVideocard() {
+        return videocard;
+    }
+
+    public void setVideocard(String videocard) {
+        this.videocard = videocard;
+    }
+
+    public String getMotherboard() {
+        return motherboard;
+    }
+
+    public void setMotherboard(String motherboard) {
+        this.motherboard = motherboard;
+    }
+
+    public String getMemory() {
+        return memory;
+    }
+
+    public void setMemory(String memory) {
+        this.memory = memory;
+    }
+
+    public String getDisk() {
+        return disk;
+    }
+
+    public void setDisk(String disk) {
+        this.disk = disk;
+    }
+
+    public String getPowerSupply() {
+        return powerSupply;
+    }
+
+    public void setPowerSupply(String powerSupply) {
+        this.powerSupply = powerSupply;
+    }
+
 
 }
