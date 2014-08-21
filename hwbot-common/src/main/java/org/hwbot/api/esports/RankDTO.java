@@ -29,6 +29,7 @@ public class RankDTO implements Comparable<RankDTO>, Serializable {
     protected String scoreUnit;
     protected final List<String> images = new ArrayList<String>();
     protected final List<RankDTO> stages = new ArrayList<RankDTO>();
+    private final List<TagDTO> tags = new ArrayList<TagDTO>();
 
     public RankDTO() {
         super();
@@ -172,6 +173,10 @@ public class RankDTO implements Comparable<RankDTO>, Serializable {
 
     public void setScoreUnit(String scoreUnit) {
         this.scoreUnit = scoreUnit;
+    }
+
+    public List<TagDTO> getTags() {
+        return tags;
     }
 
 }
