@@ -58,9 +58,9 @@ public class NumberUtil {
     public static String formatPct(Float pct) {
         if (pct != null) {
             if (pct > 0) {
-                return "<span class='green'>" + pctFormat.format(pct) + "</span>";
+                return "<span class='positive'>" + pctFormat.format(pct) + "</span>";
             } else if (pct < 0) {
-                return "<span class='red'>" + pctFormat.format(pct) + "</span>";
+                return "<span class='negative'>" + pctFormat.format(pct) + "</span>";
             } else {
                 return "stock";
             }
