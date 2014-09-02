@@ -7,8 +7,7 @@
 	<scm>
 		<developerConnection>scm:git:git@github.com:COLARDYNIT/common.git</developerConnection>
 		<url>https://github.com/COLARDYNIT/HWBOT</url>
-  	  <tag>HEAD</tag>
-  </scm>
+  	</scm>
 	<issueManagement>
 		<system>JIRA</system>
 		<url>http://bugs.hwbot.org/browse/HWBOT</url>
