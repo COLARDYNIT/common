@@ -30,6 +30,8 @@ public class CompetitionStageDTO extends DiscussableDTO {
     private CompetitionRoundDTO round;
     private String unit;
     private String type;
+    private String excerpt;
+    private String excerptLead;
 
     // leader
 
@@ -48,7 +50,7 @@ public class CompetitionStageDTO extends DiscussableDTO {
 
     public CompetitionStageDTO(int contestBenchmarkId, String label, long startDate, long endDate, int applicationId, int contestId, String pointsDistribution,
             CompetitionRoundDTO round, int participants, String timeLeft, String ends, List<String> limitations, List<SubmissionDTO> latestSubmissions,
-            List<RankDTO> stageRanking) {
+            List<RankDTO> stageRanking, String excerpt, String excerptLead) {
         super();
         this.id = contestBenchmarkId;
         this.label = label;
@@ -64,6 +66,24 @@ public class CompetitionStageDTO extends DiscussableDTO {
         this.limitations = limitations;
         this.latestSubmissions = latestSubmissions;
         this.stageRanking = stageRanking;
+        this.excerpt = excerpt;
+        this.excerptLead = excerptLead;
+    }
+
+    public String getExcerptLead() {
+        return excerptLead;
+    }
+
+    public void setExcerptLead(String excerptLead) {
+        this.excerptLead = excerptLead;
+    }
+
+    public String getExcerpt() {
+        return excerpt;
+    }
+
+    public void setExcerpt(String excerpt) {
+        this.excerpt = excerpt;
     }
 
     public String getType() {
