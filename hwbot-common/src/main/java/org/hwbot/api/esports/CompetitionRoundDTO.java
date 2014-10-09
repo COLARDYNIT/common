@@ -55,6 +55,7 @@ public class CompetitionRoundDTO extends DiscussableDTO {
     private List<CompetitionStageDTO> stages;
     private List<RankDTO> roundRanking;
     private List<SubmissionDTO> latestSubmissions; // ok to add, or get submissions with a seperate request?
+    private List<PartnerImageDTO> partnerImages;
 
     private UserDTO leadingMember;
     private TeamDTO leadingTeam;
@@ -76,6 +77,14 @@ public class CompetitionRoundDTO extends DiscussableDTO {
         this.pictureLarge = pictureLarge;
         this.partnerPicture = partnerPicture;
         this.level = level;
+    }
+
+    public List<PartnerImageDTO> getPartnerImages() {
+        return partnerImages;
+    }
+
+    public void setPartnerImages(List<PartnerImageDTO> partnerImages) {
+        this.partnerImages = partnerImages;
     }
 
     public String getType() {
