@@ -45,6 +45,8 @@ public class CompetitionRoundDTO extends DiscussableDTO {
     private String excerpt;
     private String prizes;
     private String rules;
+    private String livestreamFeed;
+    private String livestreamChat;
 
     private Integer level;
     private boolean live = false;
@@ -77,6 +79,22 @@ public class CompetitionRoundDTO extends DiscussableDTO {
         this.pictureLarge = pictureLarge;
         this.partnerPicture = partnerPicture;
         this.level = level;
+    }
+
+    public String getLivestreamFeed() {
+        return livestreamFeed;
+    }
+
+    public void setLivestreamFeed(String livestreamFeed) {
+        this.livestreamFeed = livestreamFeed;
+    }
+
+    public String getLivestreamChat() {
+        return livestreamChat;
+    }
+
+    public void setLivestreamChat(String livestreamChat) {
+        this.livestreamChat = livestreamChat;
     }
 
     public List<PartnerImageDTO> getPartnerImages() {
