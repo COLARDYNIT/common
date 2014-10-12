@@ -4,6 +4,7 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 import org.hwbot.api.generic.dto.SubmissionDTO;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
@@ -14,7 +15,9 @@ import java.util.List;
  * 
  */
 @JsonSerialize(include = Inclusion.NON_NULL)
-public class PartnerImageDTO {
+public class PartnerImageDTO implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private String name;
 
