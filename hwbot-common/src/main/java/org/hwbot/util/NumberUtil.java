@@ -11,29 +11,19 @@ public class NumberUtil {
     public static final NumberFormat pctFormat = new DecimalFormat("+#.00%;-#.00%", new DecimalFormatSymbols(Locale.US));
 
     public static String getOrdinalSuffix(int number) {
-        String suffix;
         if (number == 0) {
-            suffix = "";
-        } else if (number < 20 && number > 9) {
-            suffix = "th";
+            return "";
         } else {
-            number = number % 10;
-            switch (number) {
-            case 1:
-                suffix = "st";
-                break;
-            case 2:
-                suffix = "nd";
-                break;
-            case 3:
-                suffix = "rd";
-                break;
-            default:
-                suffix = "th";
-                break;
+            String[] suffixes = new String[] { "th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th" };
+            switch (number % 100) {
+                case 11:
+                case 12:
+                case 13:
+                    return number + "th";
+                default:
+                    return number + suffixes[number % 10];
             }
         }
-        return suffix;
     }
 
     public static String formatChange(float change) {
