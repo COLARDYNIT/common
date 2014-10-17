@@ -19,9 +19,9 @@ public class NumberUtil {
                 case 11:
                 case 12:
                 case 13:
-                    return number + "th";
+                    return "th";
                 default:
-                    return number + suffixes[number % 10];
+                    return suffixes[number % 10];
             }
         }
     }
