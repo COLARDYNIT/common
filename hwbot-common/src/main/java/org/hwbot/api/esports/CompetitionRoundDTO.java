@@ -47,6 +47,7 @@ public class CompetitionRoundDTO extends DiscussableDTO {
     private String rules;
     private String livestreamFeed;
     private String livestreamChat;
+    private String unit;
 
     private Integer level;
     private boolean live = false;
@@ -79,6 +80,14 @@ public class CompetitionRoundDTO extends DiscussableDTO {
         this.pictureLarge = pictureLarge;
         this.partnerPicture = partnerPicture;
         this.level = level;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 
     public String getLivestreamFeed() {
