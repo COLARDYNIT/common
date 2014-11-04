@@ -12,10 +12,12 @@ public class TagDTO implements Serializable {
     public Integer id;
     public String tag;
     public String type;
+    public String name;
 
-    public TagDTO(Integer id, String tag, String type) {
+    public TagDTO(Integer id, String name, String tag, String type) {
         super();
         this.id = id;
+        this.name = name;
         this.tag = tag;
         this.type = type;
     }
@@ -47,6 +49,14 @@ public class TagDTO implements Serializable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
