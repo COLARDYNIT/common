@@ -30,6 +30,10 @@ public class StringUtil {
         return makeUrlSafe(name, true);
     }
 
+    public static String unmakeUrlSafe(String name) {
+        return name.replaceAll("_", " ");
+    }
+
     public static String makeUrlSafe(String name, boolean lowercase) {
         if (name == null) {
             return null;
