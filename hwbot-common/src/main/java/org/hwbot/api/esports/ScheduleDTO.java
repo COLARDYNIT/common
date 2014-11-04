@@ -127,7 +127,7 @@ public class ScheduleDTO extends DiscussableDTO {
         boolean added = false;
         boolean firstRow = true;
         for (CompetitionScheduleRowDTO row : this.rows) {
-            if (fullName.equals(row.getName())) {
+            if (tag.equals(row.getTag())) {
                 firstRow = false;
                 boolean overlaps = false;
                 for (CompetitionScheduleDTO schedule : row.getList()) {
