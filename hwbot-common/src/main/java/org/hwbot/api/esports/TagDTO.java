@@ -13,11 +13,13 @@ public class TagDTO implements Serializable {
     public String tag;
     public String type;
     public String name;
+    public String fullName;
 
-    public TagDTO(Integer id, String name, String tag, String type) {
+    public TagDTO(Integer id, String name, String fullName, String tag, String type) {
         super();
         this.id = id;
         this.name = name;
+        this.fullName = fullName;
         this.tag = tag;
         this.type = type;
     }
@@ -25,6 +27,14 @@ public class TagDTO implements Serializable {
     @Override
     public String toString() {
         return "TagDTO [" + (id != null ? "id=" + id + ", " : "") + (tag != null ? "tag=" + tag + ", " : "") + (type != null ? "type=" + type : "") + "]";
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public Integer getId() {
