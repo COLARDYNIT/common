@@ -31,7 +31,7 @@ public class RankDTO implements Comparable<RankDTO>, Serializable {
     protected final List<String> images = new ArrayList<String>();
     protected final List<RankDTO> stages = new ArrayList<RankDTO>();
     protected final List<TagDTO> tags = new ArrayList<TagDTO>();
-    protected final List<Long> resultIds = new ArrayList<Long>();
+    protected final List<Integer> resultIds = new ArrayList<Integer>();
     public Integer rounds;
 
     public RankDTO() {
@@ -64,7 +64,7 @@ public class RankDTO implements Comparable<RankDTO>, Serializable {
         this.id = id;
     }
 
-    public List<Long> getResultIds() {
+    public List<Integer> getResultIds() {
         return resultIds;
     }
 
