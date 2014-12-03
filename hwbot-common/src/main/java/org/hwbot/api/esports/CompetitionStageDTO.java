@@ -32,6 +32,7 @@ public class CompetitionStageDTO extends DiscussableDTO {
     private String type;
     private String excerpt;
     private String excerptLead;
+    private String mobileBanner;
 
     // leader
 
@@ -68,6 +69,14 @@ public class CompetitionStageDTO extends DiscussableDTO {
         this.stageRanking = stageRanking;
         this.excerpt = excerpt;
         this.excerptLead = excerptLead;
+    }
+
+    public String getMobileBanner() {
+        return mobileBanner;
+    }
+
+    public void setMobileBanner(String mobileBanner) {
+        this.mobileBanner = mobileBanner;
     }
 
     public String getExcerptLead() {
