@@ -255,4 +255,31 @@ public class CompetitionStageDTO extends DiscussableDTO {
         return (this.endDate <= System.currentTimeMillis());
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("CompetitionStageDTO{");
+        sb.append("id=").append(id);
+        sb.append(", label='").append(label).append('\'');
+        sb.append(", safeName='").append(safeName).append('\'');
+        sb.append(", roundSafeName='").append(roundSafeName).append('\'');
+        sb.append(", startDate=").append(startDate);
+        sb.append(", endDate=").append(endDate);
+        sb.append(", applicationId=").append(applicationId);
+        sb.append(", contestId=").append(contestId);
+        sb.append(", pointsDistribution='").append(pointsDistribution).append('\'');
+        sb.append(", round=").append(round);
+        sb.append(", unit='").append(unit).append('\'');
+        sb.append(", type='").append(type).append('\'');
+        sb.append(", excerpt='").append(excerpt).append('\'');
+        sb.append(", excerptLead='").append(excerptLead).append('\'');
+        sb.append(", mobileBanner='").append(mobileBanner).append('\'');
+        sb.append(", participants=").append(participants);
+        sb.append(", timeLeft='").append(timeLeft).append('\'');
+        sb.append(", ends='").append(ends).append('\'');
+        sb.append(", limitations=").append(limitations);
+        sb.append(", latestSubmissions=").append(latestSubmissions);
+        sb.append(", stageRanking=").append(stageRanking);
+        sb.append('}');
+        return sb.toString();
+    }
 }

@@ -370,4 +370,43 @@ public class CompetitionRoundDTO extends DiscussableDTO {
         this.prizes = prizes;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("CompetitionRoundDTO{");
+        sb.append("id=").append(id);
+        sb.append(", parentId=").append(parentId);
+        sb.append(", startDate=").append(startDate);
+        sb.append(", endDate=").append(endDate);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", subtitle='").append(subtitle).append('\'');
+        sb.append(", safeName='").append(safeName).append('\'');
+        sb.append(", type='").append(type).append('\'');
+        sb.append(", competitorType='").append(competitorType).append('\'');
+        sb.append(", openParticipation=").append(openParticipation);
+        sb.append(", closed=").append(closed);
+        sb.append(", pictureLarge='").append(pictureLarge).append('\'');
+        sb.append(", partnerPicture='").append(partnerPicture).append('\'');
+        sb.append(", description='").append(description).append('\'');
+        sb.append(", excerptLead='").append(excerptLead).append('\'');
+        sb.append(", excerpt='").append(excerpt).append('\'');
+        sb.append(", prizes='").append(prizes).append('\'');
+        sb.append(", rules='").append(rules).append('\'');
+        sb.append(", livestreamFeed='").append(livestreamFeed).append('\'');
+        sb.append(", livestreamChat='").append(livestreamChat).append('\'');
+        sb.append(", unit='").append(unit).append('\'');
+        sb.append(", level=").append(level);
+        sb.append(", live=").append(live);
+        sb.append(", notHosted=").append(notHosted);
+        sb.append(", event=").append(event);
+        sb.append(", participants=").append(participants);
+        sb.append(", stages=").append(stages);
+        sb.append(", roundRanking=").append(roundRanking);
+        sb.append(", latestSubmissions=").append(latestSubmissions);
+        sb.append(", partnerImages=").append(partnerImages);
+        sb.append(", leadingMember=").append(leadingMember);
+        sb.append(", leadingTeam=").append(leadingTeam);
+        sb.append(", leadingCountry=").append(leadingCountry);
+        sb.append('}');
+        return sb.toString();
+    }
 }
