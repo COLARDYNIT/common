@@ -58,7 +58,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.hwbot</groupId>
-			<artifactId>hwbotprime-data</artifactId>
+			<artifactId>hwbotbench-data</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 			<scope>compile</scope>
 		</dependency>

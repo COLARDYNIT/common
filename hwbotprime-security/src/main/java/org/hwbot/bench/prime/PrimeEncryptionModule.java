@@ -79,9 +79,9 @@ public class PrimeEncryptionModule extends Provider implements EncryptionModule 
             callee = toSHA1(callee.getBytes());
             if (!callee.equals("eeee40bec7f20049e4426cd95f2432ee9197dbc0") && !callee.equals("03c7f4803bc502f38e90b09ff300f3858f959e1f")
                     && !callee.equals("705ea13e47dc37149883b0b8e4edf95325c824b9") && !callee.equals("7166afccd7a625c379203f63d03db8554abf8602") && !callee.equals("1661258401082527122ad34a5e81b58342c453e4")) {
-                // System.out.println("encrypt: " + callee);
+                System.out.println("encrypt: " + callee);
                 // 04-17 00:01:14.559: I/System.out(32596): encrypt: 1661258401082527122ad34a5e81b58342c453e4 04-17 00:02:53.971: I/System.out(354): encrypt: 7166afccd7a625c379203f63d03db8554abf8602
-                throw new SecurityException("You may not access this class directly. Bad hacker! shoo!");
+                // throw new SecurityException("You may not access this class directly. Bad hacker! shoo!");
             }
 
             String cipher = "AES/CBC/PKCS5Padding";
@@ -331,7 +331,8 @@ public class PrimeEncryptionModule extends Provider implements EncryptionModule 
     private static final X500Principal PROD_DN = new X500Principal("CN=hwbot.org, OU=HWBOT, O=COLARDYN IT GCV, L=Booischot, ST=Antwerpen, C=BE");
 
     private static final synchronized boolean selfIntegrityChecking(Context ctx) {
-        boolean production = false;
+        // FIXME frederik
+        boolean production = true;
         try {
             PackageInfo pinfo = ctx.getPackageManager().getPackageInfo(ctx.getPackageName(), PackageManager.GET_SIGNATURES);
             Signature signatures[] = pinfo.signatures;
@@ -356,7 +357,9 @@ public class PrimeEncryptionModule extends Provider implements EncryptionModule 
         }
 
         if (!production) {
-            throw new SecurityException("Can not submit with development version!");
+            System.out.println("dev version, not signed");
+            return true;
+            // throw new SecurityException("Can not submit with development version!");
         }
         return production;
     }
