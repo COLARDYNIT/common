@@ -38,6 +38,7 @@ public class CompetitionRoundDTO extends DiscussableDTO {
     private boolean closed = false;
 
     private String pictureLarge;
+    private String pictureThumb;
     private String partnerPicture;
 
     private String description;
@@ -368,6 +369,14 @@ public class CompetitionRoundDTO extends DiscussableDTO {
 
     public void setPrizes(String prizes) {
         this.prizes = prizes;
+    }
+
+    public String getPictureThumb() {
+        return pictureThumb;
+    }
+
+    public void setPictureThumb(String pictureThumb) {
+        this.pictureThumb = pictureThumb;
     }
 
     @Override
