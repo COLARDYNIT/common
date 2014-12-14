@@ -22,7 +22,7 @@ public class RankDTO implements Comparable<RankDTO>, Serializable {
     public String teamCountryCode;
     public String url;
     public String avatar;
-    public int id;
+    public long id;
 
     // details
     protected List<SubmissionDTO> submissionDTOs;
@@ -56,11 +56,11 @@ public class RankDTO implements Comparable<RankDTO>, Serializable {
         this.team = team;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
