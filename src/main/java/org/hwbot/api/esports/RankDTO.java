@@ -17,6 +17,7 @@ public class RankDTO implements Comparable<RankDTO>, Serializable {
     public String name;
     public String team;
     public String description;
+    public String source;
     public int position;
     public int points;
     public String countryCode;
@@ -145,6 +146,14 @@ public class RankDTO implements Comparable<RankDTO>, Serializable {
         } else {
             return -1;
         }
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
     }
 
     public List<RankDTO> getStages() {
