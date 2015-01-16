@@ -155,9 +155,16 @@ public class CompetitionScheduleDTO extends DiscussableDTO {
 
     @Override
     public String toString() {
-        return "CompetitionScheduleDTO [id=" + id + ", " + (name != null ? "name=" + name + ", " : "")
-                + (safeName != null ? "safeName=" + safeName + ", " : "") + (shortName != null ? "shortName=" + shortName + ", " : "")
-                + (startDate != null ? "startDate=" + startDate + ", " : "") + (endDate != null ? "endDate=" + endDate + ", " : "") + "empty=" + empty + "]";
+        final StringBuilder sb = new StringBuilder("CompetitionScheduleDTO{");
+        sb.append("id=").append(id);
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", safeName='").append(safeName).append('\'');
+        sb.append(", shortName='").append(shortName).append('\'');
+        sb.append(", startDate=").append(startDate);
+        sb.append(", endDate=").append(endDate);
+        sb.append(", empty=").append(empty);
+        sb.append(", event=").append(event);
+        sb.append('}');
+        return sb.toString();
     }
-
 }
