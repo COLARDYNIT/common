@@ -16,11 +16,11 @@ public class ScheduleDTOTest {
 
     @org.junit.Test
     public void testAdd() throws Exception {
-        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat f = new SimpleDateFormat("dd/MM/yy");
 
         ScheduleDTO schedule = new ScheduleDTO(2015, 1);
 
-        schedule.add("Div I Round 1", "challenger", "challenger", new CompetitionScheduleDTO(1, "Div I Round 1", "div1_1", "DIV1", f.parse("2015-02-01 12:00:00"), f.parse("31/03/15")));
+        schedule.add("Div I Round 1", "challenger", "challenger", new CompetitionScheduleDTO(1, "Div I Round 1", "div1_1", "DIV1", f.parse("01/02/15"), f.parse("31/03/15")));
         schedule.add("Div I Round 2", "challenger", "challenger", new CompetitionScheduleDTO(2, "Div I Round 2", "div1_2", "DIV2", f.parse("01/05/15"), f.parse("30/06/15")));
         schedule.add("Div I Round 3", "challenger", "challenger", new CompetitionScheduleDTO(3, "Div I Round 3", "div1_3", "DIV3", f.parse("01/08/15"), f.parse("30/09/15")));
 
