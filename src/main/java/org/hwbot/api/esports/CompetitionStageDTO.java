@@ -236,6 +236,15 @@ public class CompetitionStageDTO extends DiscussableDTO {
     }
 
     public String getStartTimeFormatted() {
+        return new SimpleDateFormat("HH:mm zz").format(startDate);
+    }
+
+
+    public String getEndDateFormatted() {
+        return new SimpleDateFormat("dd.MM.yyyy").format(endDate);
+    }
+
+    public String getEndTimeFormatted() {
         return new SimpleDateFormat("HH:mm zz").format(endDate);
     }
 
