@@ -130,11 +130,15 @@ public class RankDTO implements Comparable<RankDTO>, Serializable {
     }
 
     public String getPointsFormatted() {
-        NumberFormat numberInstance = NumberFormat.getNumberInstance(Locale.ENGLISH);
-        numberInstance.setMaximumFractionDigits(2);
-        numberInstance.setMinimumFractionDigits(0);
-        String format = numberInstance.format(getPoints() / 100f);
-        return format;
+        if (getPoints() < 0){
+            return "?";
+        } else {
+            NumberFormat numberInstance = NumberFormat.getNumberInstance(Locale.ENGLISH);
+            numberInstance.setMaximumFractionDigits(2);
+            numberInstance.setMinimumFractionDigits(0);
+            String format = numberInstance.format(getPoints() / 100f);
+            return format;
+        }
     }
 
     @Override
