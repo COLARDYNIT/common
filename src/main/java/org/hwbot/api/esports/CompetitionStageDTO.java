@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
+import org.hwbot.api.generic.dto.ApplicationDTO;
 import org.hwbot.api.generic.dto.SubmissionDTO;
 
 /**
@@ -33,6 +34,7 @@ public class CompetitionStageDTO extends DiscussableDTO {
     private String excerpt;
     private String excerptLead;
     private String mobileBanner;
+    private ApplicationDTO benchmark;
 
     // leader
 
@@ -262,6 +264,14 @@ public class CompetitionStageDTO extends DiscussableDTO {
 
     public boolean isPassed() {
         return (this.endDate <= System.currentTimeMillis());
+    }
+
+    public ApplicationDTO getBenchmark() {
+        return benchmark;
+    }
+
+    public void setBenchmark(ApplicationDTO benchmark) {
+        this.benchmark = benchmark;
     }
 
     @Override
