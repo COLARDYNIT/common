@@ -1,11 +1,7 @@
 package org.hwbot.api.esports;
 
-import junit.framework.Assert;
-
 import java.text.SimpleDateFormat;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 public class ScheduleDTOTest {
 
