@@ -54,6 +54,7 @@ public class CompetitionRoundDTO extends DiscussableDTO {
     private boolean live = false;
     private boolean notHosted = false;
     private boolean event = false;
+    private boolean customLeaderboard = false;
 
     private int participants;
     private List<CompetitionStageDTO> stages;
@@ -81,6 +82,14 @@ public class CompetitionRoundDTO extends DiscussableDTO {
         this.pictureLarge = pictureLarge;
         this.partnerPicture = partnerPicture;
         this.level = level;
+    }
+
+    public boolean isCustomLeaderboard() {
+        return customLeaderboard;
+    }
+
+    public void setCustomLeaderboard(boolean customLeaderboard) {
+        this.customLeaderboard = customLeaderboard;
     }
 
     public String getUnit() {
