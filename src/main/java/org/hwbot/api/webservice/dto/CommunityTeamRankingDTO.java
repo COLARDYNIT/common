@@ -19,7 +19,7 @@ public class CommunityTeamRankingDTO {
         
     private String Hardware;
     
-    private float powerPoints;
+    private String powerPoints;
     
     private String coolingCode;
 
@@ -73,11 +73,11 @@ public class CommunityTeamRankingDTO {
 		Hardware = hardware;
 	}
 
-	public float getPowerPoints() {
+	public String getPowerPoints() {
 		return powerPoints;
 	}
 
-	public void setPowerPoints(float powerPoints) {
+	public void setPowerPoints(String powerPoints) {
 		this.powerPoints = powerPoints;
 	}
 
