@@ -24,7 +24,6 @@ public class SubmissionDTO extends DiscussableDTO implements Serializable {
     private String unit;
     private String points;
     private String country;
-    private Integer countryId;
     private String app;
     private String image;
     private String description;
@@ -317,11 +316,5 @@ public class SubmissionDTO extends DiscussableDTO implements Serializable {
         this.powerSupply = powerSupply;
     }
 
-    public Integer getCountryId() {
-        return countryId;
-    }
 
-    public void setCountryId(Integer countryId) {
-        this.countryId = countryId;
-    }
 }

@@ -26,6 +26,7 @@ public class PersistentLoginDTO implements Serializable {
     private Integer userId;
     private Integer teamId;
     private Integer countryId;
+    private String countryCode;
 
     // when persistent login is not ok
     private transient String errorMessage;
@@ -125,6 +126,14 @@ public class PersistentLoginDTO implements Serializable {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
     }
 
     @Override
