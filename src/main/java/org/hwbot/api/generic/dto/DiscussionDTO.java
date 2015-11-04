@@ -3,9 +3,7 @@ package org.hwbot.api.generic.dto;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 
-import javax.xml.stream.events.Comment;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,26 +17,37 @@ public class DiscussionDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private final String author;
+    private final String firstPostAuthor;
+    private final String lastPostAuthor;
     private final String title;
     private final String tag;
     private final long threadId;
     private final long dateCreated;
     private final long dateLastComment;
-    private int size;
-    private final List<CommentDTO> comments = new ArrayList<CommentDTO>();
+    private final int replyCount;
+    private final int deletedCount;
+    private final int views;
+    private List<CommentDTO> comments;
 
-    public DiscussionDTO(String author, String title, String tag, long threadId, long dateCreated, long dateLastComment) {
-        this.author = author;
+    public DiscussionDTO(String firstPostAuthor, String lastPostAuthor, String title, String tag, long threadId, long dateCreated, long dateLastComment, int replyCount, int deletedCount, int views) {
+        this.firstPostAuthor = firstPostAuthor;
+        this.lastPostAuthor = lastPostAuthor;
         this.title = title;
         this.tag = tag;
         this.threadId = threadId;
         this.dateCreated = dateCreated;
         this.dateLastComment = dateLastComment;
+        this.replyCount = replyCount;
+        this.deletedCount = deletedCount;
+        this.views = views;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getFirstPostAuthor() {
+        return firstPostAuthor;
+    }
+
+    public String getLastPostAuthor() {
+        return lastPostAuthor;
     }
 
     public String getTitle() {
@@ -61,30 +70,23 @@ public class DiscussionDTO implements Serializable {
         return dateLastComment;
     }
 
-    public int getSize() {
-        return size;
+    public int getReplyCount() {
+        return replyCount;
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public int getDeletedCount() {
+        return deletedCount;
+    }
+
+    public int getViews() {
+        return views;
     }
 
     public List<CommentDTO> getComments() {
         return comments;
     }
 
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("DiscussionDTO{");
-        sb.append("author='").append(author).append('\'');
-        sb.append(", title='").append(title).append('\'');
-        sb.append(", tag='").append(tag).append('\'');
-        sb.append(", threadId=").append(threadId);
-        sb.append(", dateCreated=").append(dateCreated);
-        sb.append(", dateLastComment=").append(dateLastComment);
-        sb.append(", size=").append(size);
-        sb.append(", comments=").append(comments);
-        sb.append('}');
-        return sb.toString();
+    public void setComments(List<CommentDTO> comments) {
+        this.comments = comments;
     }
 }
