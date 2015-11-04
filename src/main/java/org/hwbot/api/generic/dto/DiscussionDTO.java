@@ -27,9 +27,10 @@ public class DiscussionDTO implements Serializable {
     private final int replyCount;
     private final int deletedCount;
     private final int views;
+    private final boolean sticky;
     private List<CommentDTO> comments;
 
-    public DiscussionDTO(String firstPostAuthor, String lastPostAuthor, String title, String tag, long threadId, Long dateCreated, Long dateLastComment, int replyCount, int deletedCount, int views) {
+    public DiscussionDTO(String firstPostAuthor, String lastPostAuthor, String title, String tag, long threadId, Long dateCreated, Long dateLastComment, int replyCount, int deletedCount, int views, boolean sticky) {
         this.firstPostAuthor = firstPostAuthor;
         this.lastPostAuthor = lastPostAuthor;
         this.title = title;
@@ -40,6 +41,7 @@ public class DiscussionDTO implements Serializable {
         this.replyCount = replyCount;
         this.deletedCount = deletedCount;
         this.views = views;
+        this.sticky = sticky;
     }
 
     public String getFirstPostAuthor() {
@@ -88,5 +90,9 @@ public class DiscussionDTO implements Serializable {
 
     public void setComments(List<CommentDTO> comments) {
         this.comments = comments;
+    }
+
+    public boolean isSticky() {
+        return sticky;
     }
 }
