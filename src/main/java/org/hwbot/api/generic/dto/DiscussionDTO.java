@@ -15,21 +15,21 @@ import java.util.List;
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class DiscussionDTO implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final Long serialVersionUID = 1L;
 
     private final String firstPostAuthor;
     private final String lastPostAuthor;
     private final String title;
     private final String tag;
     private final long threadId;
-    private final long dateCreated;
-    private final long dateLastComment;
+    private final Long dateCreated;
+    private final Long dateLastComment;
     private final int replyCount;
     private final int deletedCount;
     private final int views;
     private List<CommentDTO> comments;
 
-    public DiscussionDTO(String firstPostAuthor, String lastPostAuthor, String title, String tag, long threadId, long dateCreated, long dateLastComment, int replyCount, int deletedCount, int views) {
+    public DiscussionDTO(String firstPostAuthor, String lastPostAuthor, String title, String tag, long threadId, Long dateCreated, Long dateLastComment, int replyCount, int deletedCount, int views) {
         this.firstPostAuthor = firstPostAuthor;
         this.lastPostAuthor = lastPostAuthor;
         this.title = title;
@@ -62,11 +62,11 @@ public class DiscussionDTO implements Serializable {
         return threadId;
     }
 
-    public long getDateCreated() {
+    public Long getDateCreated() {
         return dateCreated;
     }
 
-    public long getDateLastComment() {
+    public Long getDateLastComment() {
         return dateLastComment;
     }
 
