@@ -4,8 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import org.codehaus.jackson.map.annotate.JsonSerialize;
-import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion;
 import org.hwbot.util.StringUtil;
 
 /**
@@ -14,7 +14,7 @@ import org.hwbot.util.StringUtil;
  * @author frederik
  * 
  */
-@JsonSerialize(include = Inclusion.NON_NULL)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class ArticleDTO extends DiscussableDTO {
 
     private static final long serialVersionUID = 1L;

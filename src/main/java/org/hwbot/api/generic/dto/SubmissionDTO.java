@@ -1,11 +1,11 @@
 package org.hwbot.api.generic.dto;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion;
+import org.hwbot.api.esports.DiscussableDTO;
+
 import java.io.Serializable;
 import java.util.List;
-
-import org.codehaus.jackson.map.annotate.JsonSerialize;
-import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
-import org.hwbot.api.esports.DiscussableDTO;
 
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class SubmissionDTO extends DiscussableDTO implements Serializable {

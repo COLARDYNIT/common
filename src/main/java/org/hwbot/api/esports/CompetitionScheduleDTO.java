@@ -1,12 +1,12 @@
 package org.hwbot.api.esports;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion;
+import org.hwbot.util.StringUtil;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import org.codehaus.jackson.annotate.JsonIgnore;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
-import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
-import org.hwbot.util.StringUtil;
 
 /**
  * Competition info for esports.

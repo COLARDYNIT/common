@@ -1,7 +1,6 @@
 package org.hwbot.api.bench.dto;
 
-import org.codehaus.jackson.map.annotate.JsonSerialize;
-import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 /**
  * For (android) benchmark app
@@ -9,7 +8,7 @@ import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
  * @author frederik
  * 
  */
-@JsonSerialize(include = Inclusion.NON_NULL)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class DeviceInfoDTO {
 
     private Integer id;

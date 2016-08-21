@@ -3,8 +3,8 @@ package org.hwbot.api.esports;
 import java.io.Serializable;
 import java.util.List;
 
-import org.codehaus.jackson.map.annotate.JsonSerialize;
-import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion;
 import org.hwbot.api.generic.dto.CommentDTO;
 
 @JsonSerialize(include = Inclusion.NON_NULL)

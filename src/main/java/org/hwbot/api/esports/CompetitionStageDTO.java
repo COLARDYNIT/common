@@ -3,8 +3,7 @@ package org.hwbot.api.esports;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-import org.codehaus.jackson.map.annotate.JsonSerialize;
-import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.hwbot.api.generic.dto.ApplicationDTO;
 import org.hwbot.api.generic.dto.SubmissionDTO;
 
@@ -14,7 +13,7 @@ import org.hwbot.api.generic.dto.SubmissionDTO;
  * @author frederik
  * 
  */
-@JsonSerialize(include = Inclusion.NON_NULL)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class CompetitionStageDTO extends DiscussableDTO {
 
     private static final long serialVersionUID = 1L;
@@ -46,6 +45,7 @@ public class CompetitionStageDTO extends DiscussableDTO {
     private List<String> limitations;
     private List<SubmissionDTO> latestSubmissions;
     private List<RankDTO> stageRanking;
+    private List<CompetitionStageLapDTO> laps;
 
     public CompetitionStageDTO() {
         super();
@@ -272,6 +272,14 @@ public class CompetitionStageDTO extends DiscussableDTO {
 
     public void setBenchmark(ApplicationDTO benchmark) {
         this.benchmark = benchmark;
+    }
+
+    public List<CompetitionStageLapDTO> getLaps() {
+        return laps;
+    }
+
+    public void setLaps(List<CompetitionStageLapDTO> laps) {
+        this.laps = laps;
     }
 
     @Override
