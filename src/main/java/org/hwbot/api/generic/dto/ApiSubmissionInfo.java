@@ -1,18 +1,15 @@
 package org.hwbot.api.generic.dto;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+
+import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlID;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
-
-@XmlRootElement(name = "submission")
+@JacksonXmlRootElement(localName = "submission")
 @XmlType(propOrder = { "user", "benchmark", "score", "date", "team", "proocteam", "country", "contest", "stage", "league", "ranking", "state", "description",
         "screenshot", "pictures", "hardware" })
 public class ApiSubmissionInfo implements Serializable {
@@ -128,13 +125,13 @@ public class ApiSubmissionInfo implements Serializable {
         return screenshot;
     }
 
-    @XmlElement(name = "picture")
+    @JacksonXmlProperty(localName ="picture")
     @XmlElementWrapper
     public List<String> getPictures() {
         return pictures;
     }
 
-    @XmlElement(name = "component")
+    @JacksonXmlProperty(localName ="component")
     @XmlElementWrapper
     public List<XmlHardwareElement> getHardware() {
         return hardware;

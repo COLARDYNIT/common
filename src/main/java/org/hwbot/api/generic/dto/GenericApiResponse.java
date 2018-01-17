@@ -1,13 +1,15 @@
 package org.hwbot.api.generic.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@XmlRootElement(name = "response")
+@JacksonXmlRootElement(localName = "response")
 public class GenericApiResponse<T> implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -33,10 +35,6 @@ public class GenericApiResponse<T> implements Serializable {
         this.numberOfResults = numberOfResults;
     }
 
-    @XmlElements({ @XmlElement(name = "submission", type = ApiSubmissionInfo.class), @XmlElement(name = "submission", type = ApiRankingInfo.class),
-            @XmlElement(name = "member", type = ApiMemberInfo.class), @XmlElement(name = "benchmark", type = ApiApplicationInfo.class),
-            @XmlElement(name = "competition", type = ApiContestInfo.class) })
-    @XmlElementWrapper
     public List<T> getResults() {
         return results;
     }
@@ -49,7 +47,7 @@ public class GenericApiResponse<T> implements Serializable {
         results.add(result);
     }
 
-    @XmlElement(name = "error")
+    @JacksonXmlProperty(localName ="error")
     @XmlElementWrapper
     public List<String> getErrors() {
         return errors;

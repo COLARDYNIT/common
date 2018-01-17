@@ -1,14 +1,14 @@
 package org.hwbot.api.generic.dto;
 
-import java.util.Date;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlID;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import java.util.Date;
 
-@XmlRootElement(name = "competition")
+@JacksonXmlRootElement(localName = "competition")
 @XmlType(propOrder={"name", "startDate", "endDate", "type", "externalUrl", "twitterhash", "tag", "level", "parentId", "closed", "event", "challenge", "participants"})
 public class ApiContestInfo {
 

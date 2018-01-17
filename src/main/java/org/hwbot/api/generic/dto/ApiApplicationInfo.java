@@ -1,15 +1,11 @@
 package org.hwbot.api.generic.dto;
 
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+
+import javax.xml.bind.annotation.*;
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
-import javax.xml.bind.annotation.XmlID;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
-
-@XmlRootElement(name = "benchmark")
+@JacksonXmlRootElement(localName = "benchmark")
 @XmlType(propOrder={"safeName", "website", "downloadLink", "description", "type", "supportedVersions", "wrpoints", "glpoints", "hwpoints", "multithreaded", "parentId", "country", "region"})
 public class ApiApplicationInfo {
 

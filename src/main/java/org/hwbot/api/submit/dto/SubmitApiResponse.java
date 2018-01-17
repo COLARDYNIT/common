@@ -1,12 +1,11 @@
 package org.hwbot.api.submit.dto;
 
-import java.io.Serializable;
-
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+
+import javax.xml.bind.annotation.XmlElement;
+import java.io.Serializable;
 
 /**
  * Submission and versioning API, for benchmark clients
@@ -14,7 +13,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize.Inclusion;
  * @author frederik
  *
  */
-@XmlRootElement(name = "response")
+@JacksonXmlRootElement(localName = "response")
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class SubmitApiResponse implements Serializable {
 

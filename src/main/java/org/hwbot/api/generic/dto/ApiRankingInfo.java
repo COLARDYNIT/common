@@ -1,14 +1,14 @@
 package org.hwbot.api.generic.dto;
 
-import java.util.Date;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlID;
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import java.util.Date;
 
-@XmlRootElement(name = "ranking")
+@JacksonXmlRootElement(localName = "ranking")
 @XmlType(propOrder = { "user", "score", "date", "team", "proocteam", "country", "league", "ranking", "description" })
 public class ApiRankingInfo {
 
